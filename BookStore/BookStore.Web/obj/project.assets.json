@@ -10635,11 +10635,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Project\\BookStore\\BookStore.Web\\BookStore.Web.csproj",
+      "projectUniqueName": "F:\\Project\\BookStore\\BookStore\\BookStore.Web\\BookStore.Web.csproj",
       "projectName": "BookStore.Web",
-      "projectPath": "F:\\Project\\BookStore\\BookStore.Web\\BookStore.Web.csproj",
+      "projectPath": "F:\\Project\\BookStore\\BookStore\\BookStore.Web\\BookStore.Web.csproj",
       "packagesPath": "C:\\Users\\NVH\\.nuget\\packages\\",
-      "outputPath": "F:\\Project\\BookStore\\BookStore.Web\\obj\\",
+      "outputPath": "F:\\Project\\BookStore\\BookStore\\BookStore.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\NVH\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10656,14 +10656,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "F:\\Project\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj": {
-              "projectPath": "F:\\Project\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj"
+            "F:\\Project\\BookStore\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj": {
+              "projectPath": "F:\\Project\\BookStore\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj"
             },
-            "F:\\Project\\BookStore\\BookStore.Data\\BookStore.Data.csproj": {
-              "projectPath": "F:\\Project\\BookStore\\BookStore.Data\\BookStore.Data.csproj"
+            "F:\\Project\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj": {
+              "projectPath": "F:\\Project\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj"
             },
-            "F:\\Project\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj": {
-              "projectPath": "F:\\Project\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj"
+            "F:\\Project\\BookStore\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj": {
+              "projectPath": "F:\\Project\\BookStore\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj"
             }
           }
         }

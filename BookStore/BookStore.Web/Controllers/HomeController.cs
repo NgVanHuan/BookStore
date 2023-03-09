@@ -28,7 +28,7 @@ namespace BookStore.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var addresses = await _unitOfWork.AddressRepository.GetAll().ToListAsync();
-            var listAddress = _mapper.Map<IList<Address>, IList<AddressModel>>(addresses);
+            var listAddress = _mapper.Map<IList<Address>, IList<AddressViewModel>>(addresses);
             return View(listAddress);
         }
 

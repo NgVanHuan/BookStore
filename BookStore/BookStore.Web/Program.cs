@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddRazorPages();
 
-builder.Services.AddAutoMapper(typeof(Maps));
+builder.Services.AddAutoMapper(typeof(Maps).Assembly);
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
