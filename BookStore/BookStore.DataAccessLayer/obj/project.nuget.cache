@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DNewIrQXuEbL4SUkZa/yZAK1tsETyAffK88Vdqq3WIxapdJdu43UzDP5GPAvGCrPZB4Kl0f9vbifMtsyln58nw==",
+  "dgSpecHash": "qoLTFck3U9Zcwia3Tiuypz0FuB8aWQNCjNL9LqTl8/bvWj3nbN9f7Ynq0/PQsfjvG5LxnNRaQ53fttLvQQsm6A==",
   "success": true,
-  "projectFilePath": "F:\\DoAnTotNghiep\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj",
+  "projectFilePath": "F:\\Project\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\NVH\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\NVH\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

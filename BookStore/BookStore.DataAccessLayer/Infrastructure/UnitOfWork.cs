@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BookStore.Data.Context;
+using BookStore.DataAccessLayer.IRepository;
+using BookStore.DataAccessLayer.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +11,19 @@ namespace BookStore.DataAccessLayer.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
+        private readonly BookDbContext _context;
+        private IAddressRepository _addressRepository;
+
+        public UnitOfWork(BookDbContext context)
+        {
+            _context = context;
+        }
+
+        public IAddressRepository AddressRepository => _addressRepository ??= (IAddressRepository)new AddressRepository(_context);
+
+        public int SaveChanges()
+        {
+            return _context.SaveChanges();
+        }
     }
 }

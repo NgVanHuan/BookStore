@@ -3247,11 +3247,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\DoAnTotNghiep\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj",
+      "projectUniqueName": "F:\\Project\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj",
       "projectName": "BookStore.DataAccessLayer",
-      "projectPath": "F:\\DoAnTotNghiep\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj",
+      "projectPath": "F:\\Project\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj",
       "packagesPath": "C:\\Users\\NVH\\.nuget\\packages\\",
-      "outputPath": "F:\\DoAnTotNghiep\\BookStore\\BookStore.DataAccessLayer\\obj\\",
+      "outputPath": "F:\\Project\\BookStore\\BookStore.DataAccessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\NVH\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3268,8 +3268,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "F:\\DoAnTotNghiep\\BookStore\\BookStore.Data\\BookStore.Data.csproj": {
-              "projectPath": "F:\\DoAnTotNghiep\\BookStore\\BookStore.Data\\BookStore.Data.csproj"
+            "F:\\Project\\BookStore\\BookStore.Data\\BookStore.Data.csproj": {
+              "projectPath": "F:\\Project\\BookStore\\BookStore.Data\\BookStore.Data.csproj"
             }
           }
         }
