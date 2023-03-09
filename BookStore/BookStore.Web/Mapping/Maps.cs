@@ -8,7 +8,7 @@ namespace BookStore.Web.Mapping
     {
         public Maps()
         {
-            CreateMap<Address, AddressModel>().ReverseMap();
+            CreateMap<Address, AddressViewModel>().ReverseMap();
         }
     }
 }

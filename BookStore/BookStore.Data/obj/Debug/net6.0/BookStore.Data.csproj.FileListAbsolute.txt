@@ -26,3 +26,17 @@ F:\Project\BookStore\BookStore.Data\obj\Debug\net6.0\refint\BookStore.Data.dll
 F:\Project\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.pdb
 F:\Project\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.genruntimeconfig.cache
 F:\Project\BookStore\BookStore.Data\obj\Debug\net6.0\ref\BookStore.Data.dll
+F:\Project\BookStore\BookStore\BookStore.Data\bin\Debug\net6.0\BookStore.Data.deps.json
+F:\Project\BookStore\BookStore\BookStore.Data\bin\Debug\net6.0\BookStore.Data.runtimeconfig.json
+F:\Project\BookStore\BookStore\BookStore.Data\bin\Debug\net6.0\BookStore.Data.dll
+F:\Project\BookStore\BookStore\BookStore.Data\bin\Debug\net6.0\BookStore.Data.pdb
+F:\Project\BookStore\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.csproj.AssemblyReference.cache
+F:\Project\BookStore\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.GeneratedMSBuildEditorConfig.editorconfig
+F:\Project\BookStore\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.AssemblyInfoInputs.cache
+F:\Project\BookStore\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.AssemblyInfo.cs
+F:\Project\BookStore\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.csproj.CoreCompileInputs.cache
+F:\Project\BookStore\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.dll
+F:\Project\BookStore\BookStore\BookStore.Data\obj\Debug\net6.0\refint\BookStore.Data.dll
+F:\Project\BookStore\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.pdb
+F:\Project\BookStore\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.genruntimeconfig.cache
+F:\Project\BookStore\BookStore\BookStore.Data\obj\Debug\net6.0\ref\BookStore.Data.dll
