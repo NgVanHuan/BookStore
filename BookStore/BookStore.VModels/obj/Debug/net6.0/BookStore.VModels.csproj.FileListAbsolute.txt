@@ -1,0 +1,15 @@
+F:\Project\BookStore\BookStore.VModels\bin\Debug\net6.0\BookStore.VModels.deps.json
+F:\Project\BookStore\BookStore.VModels\bin\Debug\net6.0\BookStore.VModels.dll
+F:\Project\BookStore\BookStore.VModels\bin\Debug\net6.0\BookStore.VModels.pdb
+F:\Project\BookStore\BookStore.VModels\bin\Debug\net6.0\BookStore.Data.dll
+F:\Project\BookStore\BookStore.VModels\bin\Debug\net6.0\BookStore.Data.pdb
+F:\Project\BookStore\BookStore.VModels\obj\Debug\net6.0\BookStore.VModels.csproj.AssemblyReference.cache
+F:\Project\BookStore\BookStore.VModels\obj\Debug\net6.0\BookStore.VModels.GeneratedMSBuildEditorConfig.editorconfig
+F:\Project\BookStore\BookStore.VModels\obj\Debug\net6.0\BookStore.VModels.AssemblyInfoInputs.cache
+F:\Project\BookStore\BookStore.VModels\obj\Debug\net6.0\BookStore.VModels.AssemblyInfo.cs
+F:\Project\BookStore\BookStore.VModels\obj\Debug\net6.0\BookStore.VModels.csproj.CoreCompileInputs.cache
+F:\Project\BookStore\BookStore.VModels\obj\Debug\net6.0\BookStore.VModels.csproj.CopyComplete
+F:\Project\BookStore\BookStore.VModels\obj\Debug\net6.0\BookStore.VModels.dll
+F:\Project\BookStore\BookStore.VModels\obj\Debug\net6.0\refint\BookStore.VModels.dll
+F:\Project\BookStore\BookStore.VModels\obj\Debug\net6.0\BookStore.VModels.pdb
+F:\Project\BookStore\BookStore.VModels\obj\Debug\net6.0\ref\BookStore.VModels.dll
