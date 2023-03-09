@@ -1,0 +1,14 @@
+F:\DoAnTotNghiep\BookStore\BookStore.Data\bin\Debug\net6.0\BookStore.Data.deps.json
+F:\DoAnTotNghiep\BookStore\BookStore.Data\bin\Debug\net6.0\BookStore.Data.dll
+F:\DoAnTotNghiep\BookStore\BookStore.Data\bin\Debug\net6.0\BookStore.Data.pdb
+F:\DoAnTotNghiep\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.csproj.AssemblyReference.cache
+F:\DoAnTotNghiep\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.GeneratedMSBuildEditorConfig.editorconfig
+F:\DoAnTotNghiep\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.AssemblyInfoInputs.cache
+F:\DoAnTotNghiep\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.AssemblyInfo.cs
+F:\DoAnTotNghiep\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.csproj.CoreCompileInputs.cache
+F:\DoAnTotNghiep\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.dll
+F:\DoAnTotNghiep\BookStore\BookStore.Data\obj\Debug\net6.0\refint\BookStore.Data.dll
+F:\DoAnTotNghiep\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.pdb
+F:\DoAnTotNghiep\BookStore\BookStore.Data\obj\Debug\net6.0\ref\BookStore.Data.dll
+F:\DoAnTotNghiep\BookStore\BookStore.Data\bin\Debug\net6.0\BookStore.Data.runtimeconfig.json
+F:\DoAnTotNghiep\BookStore\BookStore.Data\obj\Debug\net6.0\BookStore.Data.genruntimeconfig.cache
