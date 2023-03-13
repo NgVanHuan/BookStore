@@ -1,6 +1,6 @@
 ﻿namespace BookStore.Data.Entities
 {
-    public class Address
+    public class Address : EntityBase
     {
         public int AddressId { get; set; }
         public string? StreetNumber { get; set; }

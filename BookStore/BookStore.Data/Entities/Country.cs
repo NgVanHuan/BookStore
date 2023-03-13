@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Data.Entities
 {
-    public class Country
+    public class Country : EntityBase
     {
         [Key]
         public int CountryId { get; set; }

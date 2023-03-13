@@ -1,23 +1,26 @@
-﻿@model List<BookStore.VModels.Address.AddressViewModel>
+﻿@model IEnumerable<BookStore.VModels.Address.AddressViewModel>
+
 @{
-    Layout = null;
-    //var test = ViewBag.Test;
+    ViewData["Title"] = "Home Page";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    @foreach (var item in Model)
-    {
-        <div>
-            <h4>@item.CountryId</h4>
-            <h5>@item.AddressId</h5>
-        </div>
-    }
-</body>
-</html>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.AddressId</th>
+                <td colspan="2">@item.CountryId</td>
+                <td>@item.StreetNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>

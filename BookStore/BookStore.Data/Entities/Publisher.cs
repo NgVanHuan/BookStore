@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Data.Entities
 {
-    public class Publisher
+    public class Publisher : EntityBase
     {
         public int PublisherId { get; set; }
         public string? PublisherName { get; set; }

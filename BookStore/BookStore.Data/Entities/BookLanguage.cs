@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Data.Entities
 {
-    public class BookLanguage
+    public class BookLanguage : EntityBase
     {
         public int LanguageId { get; set; }
         public string? LanguageCode { get; set; }

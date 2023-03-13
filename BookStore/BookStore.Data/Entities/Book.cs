@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 
 namespace BookStore.Data.Entities
 {
-    public class Book
+    public class Book : EntityBase
     {
         public int BookId { get; set; }
         public virtual IList<BookAuthor>? BookAuthors { get; set; }
         public string? Title { get; set; }
         public string? IBSN13 { get; set; }
+        public string? ImageName { get; set; }
+        public string? ImageUrl { get; set; }
         public int LanguageId { get; set; }
         public virtual BookLanguage? BookLanguage { get; set; }
         public int NumPages { get; set; }
         public DateTime PublicationDate { get; set; }
+        public int CategoryId { get; set; }
+        public virtual Category? Category { get; set; }
         public int PublisherId { get; set; }
         public virtual Publisher? Publisher { get; set; }
         public virtual IList<OrderLine>? OrderLines { get; set; }
