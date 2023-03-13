@@ -666,3 +666,4 @@ F:\Project\BookStore\BookStore\BookStore.Web\obj\Debug\net6.0\refint\BookStore.W
 F:\Project\BookStore\BookStore\BookStore.Web\obj\Debug\net6.0\BookStore.Web.pdb
 F:\Project\BookStore\BookStore\BookStore.Web\obj\Debug\net6.0\BookStore.Web.genruntimeconfig.cache
 F:\Project\BookStore\BookStore\BookStore.Web\obj\Debug\net6.0\ref\BookStore.Web.dll
+F:\Project\BookStore\BookStore\BookStore.Web\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_Layout.cshtml.rz.scp.css
