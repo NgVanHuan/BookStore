@@ -2,7 +2,7 @@
 
 namespace BookStore.Data.Entities
 {
-    public class OrderLine
+    public class OrderLine : EntityBase
     {
         [Key]
         public int LineId { get; set; }

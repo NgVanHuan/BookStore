@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Data.Entities
 {
-    public class ShippingMethod
+    public class ShippingMethod : EntityBase
     {
         [Key]
         public int MethodId { get; set; }

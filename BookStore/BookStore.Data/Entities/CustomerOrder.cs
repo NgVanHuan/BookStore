@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Data.Entities
 {
-    public class CustomerOrder
+    public class CustomerOrder : EntityBase
     {
         public int OrderId { get; set; }
         public virtual IList<OrderLine>? OrderLines { get; set; }

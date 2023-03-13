@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Data.Entities
 {
-    public class OrderHistory
+    public class OrderHistory : EntityBase
     {
         [Key]
         public int HistoryId { get; set; }

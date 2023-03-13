@@ -33,5 +33,6 @@ namespace BookStore.Data.Context
         public DbSet<CustomerOrder> CustomerOrders { get; set; }
         public DbSet<OrderLine> OrderLines { get; set; }
         public DbSet<OrderHistory> OrderHistories { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }
