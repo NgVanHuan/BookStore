@@ -10,6 +10,7 @@ namespace BookStore.DataAccessLayer.Infrastructure
     public interface IUnitOfWork
     {
         IAddressRepository AddressRepository { get; }
+        ICategoryRepository CategoryRepository { get; }
 
         int SaveChanges();
     }

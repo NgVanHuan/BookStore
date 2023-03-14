@@ -13,6 +13,7 @@ namespace BookStore.DataAccessLayer.Infrastructure
     {
         private readonly BookDbContext _context;
         private IAddressRepository _addressRepository;
+        private ICategoryRepository _categoryRepository;
 
         public UnitOfWork(BookDbContext context)
         {
@@ -20,6 +21,7 @@ namespace BookStore.DataAccessLayer.Infrastructure
         }
 
         public IAddressRepository AddressRepository => _addressRepository ??= (IAddressRepository)new AddressRepository(_context);
+        public ICategoryRepository CategoryRepository => _categoryRepository ??= (ICategoryRepository)new CategoryRepository(_context);
 
         public int SaveChanges()
         {

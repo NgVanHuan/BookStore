@@ -19,12 +19,20 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/Project/BookStore/BookStore/BookStore.Web/Areas/Admin/Views/Category/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/Project/BookStore/BookStore/BookStore.Web/Areas/Admin/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Project/BookStore/BookStore/BookStore.Web/Areas/Admin/Views/Shared/_LeftSliderPatial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MZWZ0U2xpZGVyUGF0aWFsLmNzaHRtbA==
+[F:/Project/BookStore/BookStore/BookStore.Web/Areas/Admin/Views/Shared/_LeftNavBarPatial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MZWZ0TmF2QmFyUGF0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Project/BookStore/BookStore/BookStore.Web/Areas/Admin/Views/Shared/_TopNavBarPatial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9Ub3BOYXZCYXJQYXRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Project/BookStore/BookStore/BookStore.Web/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]

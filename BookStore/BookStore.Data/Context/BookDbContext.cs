@@ -18,6 +18,7 @@ namespace BookStore.Data.Context
             modelBuilder.Seed();
         }
 
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<BookLanguage> BookLanguages { get; set; }
         public DbSet<Author> Authors { get; set; }
@@ -33,6 +34,5 @@ namespace BookStore.Data.Context
         public DbSet<CustomerOrder> CustomerOrders { get; set; }
         public DbSet<OrderLine> OrderLines { get; set; }
         public DbSet<OrderHistory> OrderHistories { get; set; }
-        public DbSet<Category> Categories { get; set; }
     }
 }
