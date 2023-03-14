@@ -67,6 +67,24 @@ namespace BookStore.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Countries",
                 columns: table => new
                 {
@@ -198,6 +216,7 @@ namespace BookStore.Data.Migrations
                     LanguageId = table.Column<int>(type: "int", nullable: false),
                     NumPages = table.Column<int>(type: "int", nullable: false),
                     PublicationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
                     PublisherId = table.Column<int>(type: "int", nullable: false),
                     CreatedTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ModifiedTime = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -213,6 +232,11 @@ namespace BookStore.Data.Migrations
                         column: x => x.LanguageId,
                         principalTable: "BookLanguages",
                         principalColumn: "LanguageId");
+                    table.ForeignKey(
+                        name: "FK_Books_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId");
                     table.ForeignKey(
                         name: "FK_Books_Publishers_PublisherId",
                         column: x => x.PublisherId,
@@ -383,6 +407,11 @@ namespace BookStore.Data.Migrations
                 column: "CountryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Books_CategoryId",
+                table: "Books",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Books_LanguageId",
                 table: "Books",
                 column: "LanguageId");
@@ -465,6 +494,9 @@ namespace BookStore.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "BookLanguages");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Publishers");

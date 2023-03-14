@@ -134,6 +134,9 @@ namespace BookStore.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookId"));
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -174,6 +177,8 @@ namespace BookStore.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BookId");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("LanguageId");
 
@@ -242,6 +247,38 @@ namespace BookStore.Data.Migrations
                     b.HasKey("LanguageId");
 
                     b.ToTable("BookLanguages");
+                });
+
+            modelBuilder.Entity("BookStore.Data.Entities.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("BookStore.Data.Entities.Country", b =>
@@ -582,6 +619,12 @@ namespace BookStore.Data.Migrations
 
             modelBuilder.Entity("BookStore.Data.Entities.Book", b =>
                 {
+                    b.HasOne("BookStore.Data.Entities.Category", "Category")
+                        .WithMany("Books")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("BookStore.Data.Entities.BookLanguage", "BookLanguage")
                         .WithMany("Books")
                         .HasForeignKey("LanguageId")
@@ -595,6 +638,8 @@ namespace BookStore.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("BookLanguage");
+
+                    b.Navigation("Category");
 
                     b.Navigation("Publisher");
                 });
@@ -735,6 +780,11 @@ namespace BookStore.Data.Migrations
                 });
 
             modelBuilder.Entity("BookStore.Data.Entities.BookLanguage", b =>
+                {
+                    b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("BookStore.Data.Entities.Category", b =>
                 {
                     b.Navigation("Books");
                 });
