@@ -28,5 +28,23 @@ namespace BookStore.Web.Areas.Admin.Controllers
             var listCategory = _mapper.Map<IList<Category>, IList<CategoryViewModel>>(categories);
             return View(listCategory);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.CategoryRepository.Add(category);
+                _unitOfWork.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(category);
+        }
     }
 }
