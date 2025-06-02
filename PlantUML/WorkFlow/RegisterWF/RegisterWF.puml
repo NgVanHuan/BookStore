@@ -1,0 +1,20 @@
+@startuml
+actor Customer
+boundary RegistrationUI
+control RegistrationController
+entity Customers
+entity Accounts
+actor ISQL
+
+Customer -> RegistrationUI : Registration link received()
+Customer -> RegistrationUI : Enter full name, address, phone,\nusername, password()
+Customer -> RegistrationUI : Click register button()
+RegistrationUI -> RegistrationController : Validate registration()
+RegistrationController -> Customers: Add customer()
+RegistrationController -> ISQL : Insert customer into database()
+
+RegistrationController -> Accounts : Add account()
+RegistrationController -> ISQL : Insert account into database()
+
+RegistrationController -> RegistrationUI: Redirect to login page()
+@enduml

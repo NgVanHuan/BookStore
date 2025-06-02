@@ -1,0 +1,13 @@
+@startuml
+actor User
+boundary OrderManagerUI
+control OrderManagerController
+entity Order
+Actor ISQL as Database 
+
+User -> OrderManagerUI: place order()
+OrderManagerUI-> OrderManagerController: validate order()
+OrderManagerController-> Order : create order()
+OrderManagerController-> Database : store order details()
+OrderManagerController-> OrderManagerUI: display confirmation()
+@enduml

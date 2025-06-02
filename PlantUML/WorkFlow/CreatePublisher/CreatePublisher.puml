@@ -1,0 +1,16 @@
+@startuml
+actor Admin
+boundary PublisherManagerUI
+control PublisherManagerController
+entity Publishers as Publisher 
+actor ISQL
+
+Admin -> PublisherManagerUI : press create publisher button()
+PublisherManagerUI -> PublisherManagerController : display publisher form()
+Admin -> PublisherManagerUI : enter publisher information()
+Admin -> PublisherManagerUI : press create publisher button()
+PublisherManagerController -> PublisherManagerUI : check publisher information()
+PublisherManagerController -> Publisher : add publisher()
+PublisherManagerController-> ISQL: add publisher in publisher table()
+PublisherManagerController -> PublisherManagerUI : display notification()
+@enduml

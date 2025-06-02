@@ -1,0 +1,16 @@
+@startuml
+actor Customer
+boundary UpdatePersonalInfoUI
+control UpdatePersonalInfoController
+entity Customers
+actor ISQL
+
+Customer -> UpdatePersonalInfoUI: select update personal info()
+UpdatePersonalInfoUI -> UpdatePersonalInfoUI: display update personal info form()
+Customer -> UpdatePersonalInfoUI: enter personal info()
+Customer -> UpdatePersonalInfoUI: click update button()
+UpdatePersonalInfoUI -> UpdatePersonalInfoController: validate entered info()
+UpdatePersonalInfoController -> Customers: update customer()
+UpdatePersonalInfoController -> ISQL: update customer record()
+UpdatePersonalInfoController -> UpdatePersonalInfoUI: display notification()
+@enduml

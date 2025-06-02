@@ -1,0 +1,16 @@
+@startuml
+actor Admin
+boundary AuthorManagerUI
+control AuthorManagerController
+entity Authors as Author 
+actor ISQL
+
+Admin -> AuthorManagerUI : press the delete button on the author field()
+AuthorManagerUI -> AuthorManagerUI : display delete confirmation popup()
+Admin -> AuthorManagerUI : press ok()
+AuthorManagerUI -> AuthorManagerController : get author id()
+
+AuthorManagerController -> Author : delete author()
+AuthorManagerController-> ISQL: update author in author table()
+AuthorManagerController -> AuthorManagerUI : display notification()
+@enduml

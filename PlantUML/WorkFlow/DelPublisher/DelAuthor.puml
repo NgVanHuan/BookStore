@@ -1,0 +1,16 @@
+@startuml
+actor Admin
+boundary PublisherManagerUI
+control PublisherManagerController
+entity Publishers as Publisher 
+actor ISQL
+
+Admin -> PublisherManagerUI : press the delete button on the publisher field()
+PublisherManagerUI -> PublisherManagerUI : display delete confirmation popup()
+Admin -> PublisherManagerUI : press ok()
+PublisherManagerUI -> PublisherManagerController : get publisher id()
+
+PublisherManagerController -> Publisher : delete publisher()
+PublisherManagerController-> ISQL: update publisher in publisher table()
+PublisherManagerController -> PublisherManagerUI : display notification()
+@enduml

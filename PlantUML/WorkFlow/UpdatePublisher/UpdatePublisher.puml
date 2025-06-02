@@ -1,0 +1,16 @@
+@startuml
+actor Admin
+boundary PublisherManagerUI
+control PublisherManagerController
+entity Publisher
+actor ISQL as Database 
+
+Admin -> PublisherManagerUI : press edit publisher button()
+PublisherManagerUI -> PublisherManagerUI : display publisher form()
+Admin -> PublisherManagerUI : enter publisher information()
+Admin -> PublisherManagerUI : press edit publisher button()
+PublisherManagerUI -> PublisherManagerController : check publisher information()
+PublisherManagerController -> Publisher : edit publisher()
+PublisherManagerController -> Database : update publisher in publisher table()
+PublisherManagerController -> PublisherManagerUI : display notification()
+@enduml

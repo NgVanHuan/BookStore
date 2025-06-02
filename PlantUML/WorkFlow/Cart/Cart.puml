@@ -1,0 +1,11 @@
+@startuml
+actor User
+boundary CartManagerUI
+control CartManagerController
+
+User -> CartManagerUI: select cart()
+CartManagerUI-> CartManagerController: get cart information in session()
+CartManagerController -> CartManagerUI: display cart()
+CartManagerUI-> CartManagerController: make changes to cart information
+CartManagerController-> CartManagerUI: redisplay cart information()
+@enduml

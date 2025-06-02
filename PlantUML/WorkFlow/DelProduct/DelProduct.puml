@@ -1,0 +1,16 @@
+@startuml
+actor Admin
+boundary ProductManagerUI
+control ProductManagerController
+entity Books as Product 
+actor ISQL
+
+Admin -> ProductManagerUI : press the delete button on the product field()
+ProductManagerUI -> ProductManagerUI : display delete confirmation popup()
+Admin -> ProductManagerUI : press ok()
+ProductManagerUI -> ProductManagerController : get product id()
+
+ProductManagerController -> Product : delete product()
+ProductManagerController-> ISQL: update product in product table()
+ProductManagerController -> ProductManagerUI : display notification()
+@enduml

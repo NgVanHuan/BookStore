@@ -1,0 +1,16 @@
+@startuml
+actor Admin
+boundary AuthorManagerUI
+control AuthorManagerController
+entity Author
+actor ISQL as Database 
+
+Admin -> AuthorManagerUI : press edit author button()
+AuthorManagerUI -> AuthorManagerUI : display author form()
+Admin -> AuthorManagerUI : enter author information()
+Admin -> AuthorManagerUI : press edit author button()
+AuthorManagerUI -> AuthorManagerController : check author information()
+AuthorManagerController -> Author : edit author()
+AuthorManagerController -> Database : update author in author table()
+AuthorManagerController -> AuthorManagerUI : display notification()
+@enduml

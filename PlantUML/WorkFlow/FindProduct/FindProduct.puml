@@ -1,0 +1,13 @@
+@startuml
+actor Customer
+boundary "SearchProductUI"
+control "SearchProductController"
+entity "Products" as Product
+actor ISQL as Database
+
+Customer -> "SearchProductUI" : enter search info in the header search bar()
+"SearchProductUI" -> "SearchProductController" : validate information()
+"SearchProductController" -> "Product": get searched products()
+"SearchProductController" -> Database: fetch products()
+"SearchProductController" -> "SearchProductUI": display products()
+@enduml

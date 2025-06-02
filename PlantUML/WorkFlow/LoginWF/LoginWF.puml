@@ -1,0 +1,18 @@
+@startuml
+
+Actor Admin
+boundary LoginUI
+control LoginController
+entity Account as Customer
+Actor ISQL as DB
+
+Admin -> LoginUI : Access Login Page()
+LoginUI -> LoginUI : Display Login Form()
+Admin -> LoginUI : Enter Username And Password()
+Admin -> LoginUI : Click Login Button()
+LoginUI -> LoginController : Verify Username And Password()
+LoginController -> DB: Get User By Username And Password()
+Customer -> LoginController : RetrieveUser()
+LoginController -> LoginUI : Redirect To Dashboard()
+
+@enduml

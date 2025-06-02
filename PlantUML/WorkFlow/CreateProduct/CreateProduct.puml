@@ -1,0 +1,16 @@
+@startuml
+actor Admin
+boundary ProductManagerUI
+control ProductManagerController
+entity Books as Product 
+actor ISQL
+
+Admin -> ProductManagerUI : press create product button()
+ProductManagerUI -> ProductManagerController : display product form()
+Admin -> ProductManagerUI : enter product information()
+Admin -> ProductManagerUI : press create product button()
+ProductManagerController -> ProductManagerUI : check product information()
+ProductManagerController -> Product : add product()
+ProductManagerController-> ISQL: add product in product table()
+ProductManagerController -> ProductManagerUI : display notification()
+@enduml

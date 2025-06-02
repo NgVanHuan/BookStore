@@ -1,0 +1,10 @@
+@startuml
+left to right direction
+actor Admin
+usecase Login as Login
+usecase AccountManager as AccountManager
+usecase UpdateCustomerAccount as UpdateCustomerAccount
+Admin -> AccountManager
+AccountManager <|-- Login : <<include>>
+AccountManager <|-- UpdateCustomerAccount : <<extend>>
+@enduml

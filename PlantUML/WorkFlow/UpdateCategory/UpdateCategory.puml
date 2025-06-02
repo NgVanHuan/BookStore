@@ -1,0 +1,16 @@
+@startuml
+actor Admin
+boundary CategoryManagerUI
+control CategoryManagerController
+entity Category
+actor ISQL as Database 
+
+Admin -> CategoryManagerUI : press edit category button()
+CategoryManagerUI -> CategoryManagerUI : display category form()
+Admin -> CategoryManagerUI : enter category information()
+Admin -> CategoryManagerUI : press edit category button()
+CategoryManagerUI -> CategoryManagerController : check category information()
+CategoryManagerController -> Category : edit category()
+CategoryManagerController -> Database : update category in category table()
+CategoryManagerController -> CategoryManagerUI : display notification()
+@enduml

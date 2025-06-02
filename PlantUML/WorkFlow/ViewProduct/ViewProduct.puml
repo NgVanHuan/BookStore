@@ -1,0 +1,13 @@
+@startuml
+actor User
+boundary ShowProductUI
+control ShowProductController
+entity Books as Product 
+actor ISQL
+
+User -> ShowProductUI: Click on the product image or name()
+ShowProductUI-> ShowProductController: Get product id()
+ShowProductController-> ISQL: Get product by id()
+Product -> ShowProductController: Return product information()
+ShowProductController-> ShowProductUI: Show product details()
+@enduml

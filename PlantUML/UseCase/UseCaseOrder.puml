@@ -1,0 +1,14 @@
+@startuml
+left to right direction
+actor Admin
+
+usecase Login as UC1
+usecase OrderManager as UC2
+usecase UpdateOrder as UC3
+usecase DeleteOrder as UC4
+
+Admin --> UC2
+UC2 <|-- UC1 : <<include>>
+UC2 <|-- UC3 : <<extend>>
+UC2 <|-- UC4 : <<extend>>
+@enduml

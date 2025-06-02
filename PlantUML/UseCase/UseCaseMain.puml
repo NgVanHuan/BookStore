@@ -1,0 +1,61 @@
+@startuml
+left to right direction
+skinparam linetype polyline
+skinparam actorFontSize 30
+
+' Actor
+actor Admin
+actor User
+actor ISQL
+
+' Use cases
+usecase "Login" as LG1
+usecase "Register" as RG1
+usecase "UpdatePersonalInformation" as UP1
+usecase "AccountManager" as AM1
+usecase "ProductManager" as PM1
+usecase "CategoryManager" as CM1
+usecase "AuthorManager" as AU1
+usecase "OrderManager" as OM1
+usecase "PublisherManager" as PUB1
+usecase "ViewProduct" as VP1
+usecase "SearchProduct" as SP1
+usecase "CartManager" as CM2
+usecase "ProcessOrder" as PO1
+
+' Admin connections
+Admin --> LG1
+Admin --> UP1
+Admin --> AM1
+Admin --> PM1
+Admin --> CM1
+Admin --> AU1
+Admin --> OM1
+Admin --> PUB1
+
+' ISQL connections (Admin's use cases)
+LG1 --> ISQL
+UP1 --> ISQL
+AM1 --> ISQL
+PM1 --> ISQL
+CM1 --> ISQL
+AU1 --> ISQL
+OM1 --> ISQL
+PUB1 --> ISQL
+
+' User connections
+User --> LG1
+User --> RG1
+User --> UP1
+User --> VP1
+User --> SP1
+User --> CM2
+User --> PO1
+
+' ISQL connections (User's use cases)
+RG1 --> ISQL
+VP1 --> ISQL
+SP1 --> ISQL
+CM2 --> ISQL
+PO1 --> ISQL
+@enduml

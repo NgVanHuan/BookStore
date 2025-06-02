@@ -1,0 +1,16 @@
+@startuml
+actor Admin
+boundary CategoryManagerUI
+control CategoryManagerController
+entity Categories as Category 
+actor ISQL
+
+Admin -> CategoryManagerUI : press create category button()
+CategoryManagerUI -> CategoryManagerController : display category form()
+Admin -> CategoryManagerUI : enter category information()
+Admin -> CategoryManagerUI : press create category button()
+CategoryManagerController -> CategoryManagerUI : check category information()
+CategoryManagerController -> Category : add category()
+CategoryManagerController-> ISQL: add category in category table()
+CategoryManagerController -> CategoryManagerUI : display notification()
+@enduml

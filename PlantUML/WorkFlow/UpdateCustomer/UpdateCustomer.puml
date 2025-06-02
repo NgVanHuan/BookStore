@@ -1,0 +1,16 @@
+@startuml
+actor Admin
+boundary CustomerManagerUI
+control CustomerManagerController
+entity Customer
+actor ISQL as Database 
+
+Admin -> CustomerManagerUI : press edit customer button()
+CustomerManagerUI -> CustomerManagerUI : display customer form()
+Admin -> CustomerManagerUI : enter customer information()
+Admin -> CustomerManagerUI : press edit customer button()
+CustomerManagerUI -> CustomerManagerController : check customer information()
+CustomerManagerController -> Customer : edit customer()
+CustomerManagerController -> Database : update customer in customer table()
+CustomerManagerController -> CustomerManagerUI : display notification()
+@enduml

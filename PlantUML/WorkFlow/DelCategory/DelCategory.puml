@@ -1,0 +1,16 @@
+@startuml
+actor Admin
+boundary CategoryManagerUI
+control CategoryManagerController
+entity Categories as Category 
+actor ISQL
+
+Admin -> CategoryManagerUI : press the delete button on the product field()
+CategoryManagerUI -> CategoryManagerUI : display delete confirmation popup()
+Admin -> CategoryManagerUI : press ok()
+CategoryManagerUI -> CategoryManagerController : get product id()
+
+CategoryManagerController -> Category : delete product()
+CategoryManagerController-> ISQL: update product in product table()
+CategoryManagerController -> CategoryManagerUI : display notification()
+@enduml
