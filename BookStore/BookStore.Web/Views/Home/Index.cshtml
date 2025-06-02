@@ -1,27 +1,625 @@
-﻿@model IEnumerable<BookStore.VModels.Address.AddressViewModel>
+﻿@* @model IEnumerable<BookStore.VModels.Books.BookViewModel> *@
+@model HomePageViewModel
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-@*<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <th scope="row">@item.AddressId</th>
-                <td colspan="2">@item.CountryId</td>
-                <td>@item.StreetNumber</td>
-            </tr>
-        }
-    </tbody>
-</table>
-*@
+<style>
+	/* Nút thường */
+	.pagination .page-link {
+		color: orange;
+		border: 1px solid orange;
+		background-color: white;
+	}
+
+	/* Hover */
+	.pagination .page-link:hover {
+		background-color: orange;
+		color: black;
+	}
+
+	/* Nút đang active */
+	.pagination .page-item.active .page-link {
+		background-color: orange;
+		color: black;
+		border-color: orange;
+	}
+
+	/* Nút bị disabled */
+	.pagination .page-item.disabled .page-link {
+		color: #999;
+		background-color: #eee;
+		border-color: #ccc;
+	}
+</style>
+
+<main role="main">
+	<!-- Start Category -->
+	<section id="mu-category-overview">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+                        <div class="mu-category-overview-area">
+                            <div class="mu-heading-area">
+                                <h2 class="mu-heading-title">Categories</h2>
+                                <span class="mu-header-dot"></span>
+                            </div>
+                            <!-- Start Book Overview Content -->
+							<div id="category-list" class="row">
+								@foreach (var item in Model.FeatureCategories)
+								{
+									<div class="col-md-3 col-sm-6">
+										<div class="mu-single-counter">
+											<i class="fa fa-files-o" aria-hidden="true"></i>
+										<div class="counter-value">@item.Number</div>
+										<a class="btn btn-category" aria-hidden="true" data-category-id="@item.CategoryId">
+											<h5 class="mu-counter-name category-link" data-category-id="@item.CategoryId">@item.CategoryName</h5>
+										</a>
+										</div>
+									</div>
+								}
+							</div>
+                            <!-- / Single Counter -->
+
+                            <!-- Pagination Controls -->
+							<div class="row" style="margin-top:20px;">
+								<div class="col-md-12 text-center">
+									<nav aria-label="Category pagination">
+										<ul id="category-pagination" class="pagination justify-content-center">
+											<li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+												<a class="page-link" href="#" data-page="@(@Model.CurrentPage - 1)">Previous</a>
+											</li>
+											@for (int i = 1; i <= Model.TotalPages; i++)
+											{
+												<li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+													<a class="page-link" href="#" data-page="@i">@i</a>
+												</li>
+											}
+											<li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+												<a class="page-link" href="#" data-page="@(@Model.CurrentPage + 1)">Next</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+                            <!-- End Pagination Controls -->
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	@* <!-- Start Counter --> *@
+	@* <section id="mu-counter"> *@
+	@* 	<div class="container"> *@
+	@* 		<div class="row"> *@
+	@* 			<div class="col-md-12"> *@
+	@* 				<div class="mu-counter-area"> *@
+	@* 					<div class="mu-counter-block"> *@
+	@* 						<div class="row"> *@
+
+	@* 							<!-- Start Single Counter --> *@
+	@* 							<div class="col-md-3 col-sm-6"> *@
+	@* 								<div class="mu-single-counter"> *@
+	@* 									<i class="fa fa-files-o" aria-hidden="true"></i> *@
+	@* 									<div class="counter-value" data-count="650">0</div> *@
+	@* 									<h5 class="mu-counter-name">Total Pages</h5> *@
+	@* 								</div> *@
+	@* 							</div> *@
+	@* 							<!-- / Single Counter --> *@
+	@* 							<!-- Start Single Counter --> *@
+	@* 							<div class="col-md-3 col-sm-6"> *@
+	@* 								<div class="mu-single-counter"> *@
+	@* 									<i class="fa fa-file-text-o" aria-hidden="true"></i> *@
+	@* 									<div class="counter-value" data-count="422">0</div> *@
+	@* 									<h5 class="mu-counter-name">Chapters</h5> *@
+	@* 								</div> *@
+	@* 							</div> *@
+	@* 							<!-- / Single Counter --> *@
+	@* 							<!-- Start Single Counter --> *@
+	@* 							<div class="col-md-3 col-sm-6"> *@
+	@* 								<div class="mu-single-counter"> *@
+	@* 									<i class="fa fa-users" aria-hidden="true"></i> *@
+	@* 									<div class="counter-value" data-count="1055">0</div> *@
+	@* 									<h5 class="mu-counter-name">Active Readers</h5> *@
+	@* 								</div> *@
+	@* 							</div> *@
+	@* 							<!-- / Single Counter --> *@
+	@* 							<!-- Start Single Counter --> *@
+	@* 							<div class="col-md-3 col-sm-6"> *@
+	@* 								<div class="mu-single-counter"> *@
+	@* 									<i class="fa fa-trophy" aria-hidden="true"></i> *@
+	@* 									<div class="counter-value" data-count="03">0</div> *@
+	@* 									<h5 class="mu-counter-name">Got Awards</h5> *@
+	@* 								</div> *@
+	@* 							</div> *@
+	@* 							<!-- / Single Counter --> *@
+
+	@* 						</div> *@
+	@* 					</div> *@
+
+
+	@* 				</div> *@
+	@* 			</div> *@
+	@* 		</div> *@
+	@* 	</div> *@
+	@* </section> *@
+	<!-- End Counter -->
+	<!-- Start Book Overview -->
+	<section id="mu-book-overview">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mu-book-overview-area">
+
+						<div class="mu-heading-area">
+							<h2 class="mu-heading-title">Available Books</h2>
+							<span class="mu-header-dot"></span>
+							<p>The books currently available for you to choose and enjoy.</p>
+						</div>
+
+						<!-- Start Book Overview Content -->
+						<div class="mu-book-overview-content">
+							<div class="row" id="book-list">
+								@foreach (var item in Model.Books)
+								{
+									<!-- Book Overview Single Content -->
+									<div class="col-md-3 col-sm-6">
+										<div class="mu-book-overview-single flex-column d-flex">
+											<a asp-controller="BookDetail" asp-action="Index" asp-route-bookId="@item.BookId">
+											<span class="mu-book-overview-icon-box">
+												@* <i class="fa fa-area-chart" aria-hidden="true"></i> *@
+												@{
+													String imgPath = "~/img/book/" + item.ImageName;
+												}
+												<img src="@Url.Content(imgPath)" alt="@item.ImageName" width="150" height="200" />
+											</span>
+											<h4 style="height: 50px">@item.Title</h4>
+											</a>
+											<div class="row mt-auto">
+												<div class="col-md-8" style="color: red; font-weight:bolder; font-size: xx-large" >
+													$ @item.Price
+												</div>
+												<div class="col-md-4">
+													<button style="height:48px" class="btn btn-warning btn-add-to-cart" data-book-id="@item.BookId" data-book-title="@item.Title">
+														<i class="fa fa-cart-plus"></i>
+													</button>
+												</div>
+											</div>
+											
+											<p></p>
+										</div>
+									</div>
+									<!-- / Book Overview Single Content -->
+								}
+								<!-- / Book Overview Single Content -->
+							</div>
+						</div>
+						<!-- End Book Overview Content -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Book Overview -->
+	<!-- Start Video Review -->
+
+	<section id="mu-video-review">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mu-video-review-area">
+
+						<div class="mu-heading-area">
+							<h2 class="mu-heading-title">Check Out Our Video Review</h2>
+							<span class="mu-header-dot"></span>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+						</div>
+
+						<!-- Start Video Review Content -->
+						<div class="mu-video-review-content">
+							<iframe class="mu-video-iframe" width="100%" height="480" src="https://www.youtube.com/embed/T4ySAlBt2Ug" frameborder="0" allowfullscreen></iframe>
+						</div>
+						<!-- End Video Review Content -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Video Review -->
+	@* <!-- Start Author --> *@
+	@* <section id="mu-author"> *@
+	@* 	<div class="container"> *@
+	@* 		<div class="row"> *@
+	@* 			<div class="col-md-12"> *@
+	@* 				<div class="mu-author-area"> *@
+
+	@* 					<div class="mu-heading-area"> *@
+	@* 						<h2 class="mu-heading-title">About The Author</h2> *@
+	@* 						<span class="mu-header-dot"></span> *@
+	@* 					</div> *@
+
+	@* 					<!-- Start Author Content --> *@
+	@* 					<div class="mu-author-content"> *@
+	@* 						<div class="row"> *@
+	@* 							<div class="col-md-6"> *@
+	@* 								<div class="mu-author-image"> *@
+	@* 									<img src="assets/images/author.jpg" alt="Author Image"> *@
+	@* 								</div> *@
+	@* 							</div> *@
+	@* 							<div class="col-md-6"> *@
+	@* 								<div class="mu-author-info"> *@
+	@* 									<h3>John Doe</h3> *@
+	@* 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo suscipit facilis ipsum ullam reiciendis odio error iste neque ratione libero rem accusamus voluptatibus, nihil unde maiores sunt nisi. Assumenda, consectetur.</p> *@
+
+	@* 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, dolorem error neque! Dolores similique ut iusto odit esse ipsam, nesciunt pariatur animi minima maiores mollitia cupiditate ad ipsum deleniti perspiciatis!</p> *@
+	@* 									<img class="mu-author-sign" src="assets/images/author-signature.png" alt="Author Signature"> *@
+
+	@* 									<div class="mu-author-social"> *@
+	@* 										<a href="#"><i class="fa fa-facebook"></i></a> *@
+	@* 										<a href="#"><i class="fa fa-twitter"></i></a> *@
+	@* 										<a href="#"><i class="fa fa-linkedin"></i></a> *@
+	@* 										<a href="#"><i class="fa fa-google-plus"></i></a> *@
+	@* 									</div> *@
+
+	@* 								</div> *@
+	@* 							</div> *@
+	@* 						</div> *@
+	@* 					</div> *@
+	@* 					<!-- End Author Content --> *@
+
+	@* 				</div> *@
+	@* 			</div> *@
+	@* 		</div> *@
+	@* 	</div> *@
+	@* </section> *@
+	<!-- End Author -->
+	<!-- Start Pricing -->
+	<section id="mu-pricing">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mu-pricing-area">
+
+						<div class="mu-heading-area">
+							<h2 class="mu-heading-title">Our Pricing Plans</h2>
+							<span class="mu-header-dot"></span>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+						</div>
+
+						<!-- Start Pricing Content -->
+						<div class="mu-pricing-content">
+							<div class="row">
+
+								<!-- Pricing Single Content -->
+								<div class="col-sm-6 col-md-4">
+									<div class="mu-pricing-single">
+
+										<div class="mu-pricing-single-head">
+											<h4>STANDARD PLAN</h4>
+											<p class="mu-price-tag">
+												<span>$</span> 15
+											</p>
+										</div>
+
+										<ul class="mu-price-feature">
+											<li> Lorem ipsum dolor sit amet. </li>
+											<li> Lorem ipsum dolor sit amet. </li>
+											<li> Lorem ipsum dolor sit amet. </li>
+											<li> Lorem ipsum dolor sit amet. </li>
+										</ul>
+
+										<div class="mu-pricing-single-footer">
+											<a href="#" class="mu-order-btn">Order Now!</a>
+										</div>
+
+									</div>
+								</div>
+								<!-- / Pricing Single Content -->
+								<!-- Pricing Single Content -->
+								<div class="col-sm-6 col-md-4">
+									<div class="mu-pricing-single mu-popular-price-tag">
+
+
+										<div class="mu-pricing-single-head">
+											<h4>PROFESSIONAL PLAN</h4>
+											<p class="mu-price-tag">
+												<span>$</span> 25
+											</p>
+										</div>
+
+										<ul class="mu-price-feature">
+											<li> Lorem ipsum dolor sit amet. </li>
+											<li> Lorem ipsum dolor sit amet. </li>
+											<li> Lorem ipsum dolor sit amet. </li>
+											<li> Lorem ipsum dolor sit amet. </li>
+										</ul>
+
+										<div class="mu-pricing-single-footer">
+											<a href="#" class="mu-order-btn">Order Now!</a>
+										</div>
+
+
+									</div>
+								</div>
+								<!-- / Pricing Single Content -->
+								<!-- Pricing Single Content -->
+								<div class="col-sm-6 col-md-4">
+									<div class="mu-pricing-single">
+
+
+										<div class="mu-pricing-single-head">
+											<h4>EXCLUSIVE PLAN</h4>
+											<p class="mu-price-tag">
+												<span>$</span> 45
+											</p>
+										</div>
+
+										<ul class="mu-price-feature">
+											<li> Lorem ipsum dolor sit amet. </li>
+											<li> Lorem ipsum dolor sit amet. </li>
+											<li> Lorem ipsum dolor sit amet. </li>
+											<li> Lorem ipsum dolor sit amet. </li>
+										</ul>
+
+										<div class="mu-pricing-single-footer">
+											<a href="#" class="mu-order-btn">Order Now!</a>
+										</div>
+
+
+									</div>
+								</div>
+								<!-- / Pricing Single Content -->
+
+
+							</div>
+						</div>
+						<!-- End Pricing Content -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Pricing -->
+	<!-- Start Testimonials -->
+	<section id="mu-testimonials">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mu-testimonials-area">
+						<div class="mu-heading-area">
+							<h2 class="mu-heading-title">What Our Readers Says</h2>
+							<span class="mu-header-dot"></span>
+						</div>
+
+						<div class="mu-testimonials-block">
+							<ul class="mu-testimonial-slide">
+
+								<li>
+									<p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever."</p>
+									<img class="mu-rt-img" src="assets/images/reader-1.jpg" alt="img">
+									<h5 class="mu-rt-name"> - Alice Boga</h5>
+									<span class="mu-rt-title">CEO, Apple Inc.</span>
+								</li>
+
+								<li>
+									<p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever."</p>
+									<img class="mu-rt-img" src="assets/images/reader-2.jpg" alt="img">
+									<h5 class="mu-rt-name"> - Jhon Doe</h5>
+									<span class="mu-rt-title">Director, Google Inc.</span>
+								</li>
+
+								<li>
+									<p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever."</p>
+									<img class="mu-rt-img" src="assets/images/reader-3.jpg" alt="img">
+									<h5 class="mu-rt-name"> - Jessica Doe</h5>
+									<span class="mu-rt-title">Web Developer</span>
+								</li>
+
+							</ul>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Testimonials -->
+	<!-- Start Contact -->
+	<section id="mu-contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mu-contact-area">
+
+						<div class="mu-heading-area">
+							<h2 class="mu-heading-title">Drop Us A Message</h2>
+							<span class="mu-header-dot"></span>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+						</div>
+
+						<!-- Start Contact Content -->
+						<div class="mu-contact-content">
+
+							<div id="form-messages"></div>
+							<form id="ajax-contact" method="post" action="mailer.php" class="mu-contact-form">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Name" id="name" name="name" required>
+								</div>
+								<div class="form-group">
+									<input type="email" class="form-control" placeholder="Enter Email" id="email" name="email" required>
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" placeholder="Message" id="message" name="message" required></textarea>
+								</div>
+								<button type="submit" class="mu-send-msg-btn"><span>SUBMIT</span></button>
+							</form>
+
+						</div>
+						<!-- End Contact Content -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Contact -->
+	<!-- Start Google Map -->
+	<section id="mu-google-map">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d659.5627634715449!2d105.93127905791128!3d20.748750340146152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1747927346633!5m2!1svi!2s" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+		@* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29790.472017658627!2d105.76350901696776!3d21.040326972680496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345457e292d5bf%3A0x20ac91c94d74439a!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2hp4buHcCBIw6AgTuG7mWk!5e0!3m2!1svi!2s!4v1744951229590!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> *@
+	</section>
+	<!-- End Google Map -->
+
+</main>
+<!-- End main content -->
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// Xử lý sự kiện "Add to Cart"
+			// document.querySelectorAll(".btn-add-to-cart").forEach(button => {
+			// 	button.addEventListener("click", function () {
+			// 		const bookId = this.getAttribute("data-book-id");
+			// 		fetch('/Cart/AddToCart?bookId=' + bookId)
+			// 		.then(response => {
+			// 			if (response.ok) {
+			// 				alert('Book added to cart!');
+			// 				location.reload(); // Reload the page to update cart count
+			// 				// updateCartCount();
+			// 			} else {
+			// 				alert('Failed to add book to cart.');
+			// 			}
+			// 		})
+			// 		.catch(error => console.error("Error adding to cart:", error));
+			// 	});
+			// });
+			// Cập nhật số lượng sản phẩm trong giỏ hàng
+			function updateCartCount() {
+				fetch('/Home/GetCartCount')
+					.then(response => response.json())
+					.then(data => {
+						document.getElementById("cart-count").innerText = data.count;
+					})
+					.catch(error => console.error("Error fetching cart count:", error));
+			}
+			
+			// Event delegation for dynamically loaded .btn-add-to-cart
+			document.getElementById("book-list").addEventListener("click", function (e) {
+				if (e.target.classList.contains("btn-add-to-cart")) {
+					const bookId = e.target.getAttribute("data-book-id");
+					const title = e.target.getAttribute("data-book-title");
+					const btn = e.target.closest(".btn-add-to-cart");
+					if (!btn) return; // không phải nút thì bỏ qua
+
+					// const bookId = btn.getAttribute("data-book-id");
+					if (!bookId) return;
+					fetch('/Cart/AddToCart?bookId=' + bookId).then(response => {
+						if (response.ok) {
+							alert('Book added to cart!');
+							// location.reload(); // Reload the page to update cart count
+							updateCartCount();
+						} else {
+							alert('Failed to add book to cart.');
+						}
+					})
+					.catch(error => console.error("Error adding to cart:", error));
+				}
+			});
+
+			// Xử lý sự kiện phân trang category
+			document.getElementById("category-pagination").addEventListener("click", function (e) {
+				if (e.target.tagName === "A" && e.target.hasAttribute("data-page")) {
+					e.preventDefault();
+					const page = parseInt(e.target.getAttribute("data-page"));
+					if (!isNaN(page)) {
+						loadCategories(page);
+					}
+				}
+			});
+
+			function loadCategories(page) {
+				fetch(`/Home/GetPagedCategories?page=${page}`)
+					.then(response => response.json())
+					.then(data => {
+						// Render lại danh sách category
+						const categoryList = document.getElementById("category-list");
+						categoryList.innerHTML = "";
+						data.categories.forEach(item => {
+							categoryList.innerHTML += `
+								<div class="col-md-3 col-sm-6">
+									<div class="mu-single-counter">
+										<i class="fa fa-files-o" aria-hidden="true"></i>
+									<div class="counter-value">${item.number}</div>
+									<a class="btn btn-category" aria-hidden="true" data-category-id="${item.categoryId}">
+										<h5 class="mu-counter-name category-link" data-category-id="${item.categoryId}">${item.categoryName}</h5>
+									</a>
+									</div>
+								</div>
+							`;
+						});
+
+						// Render lại phân trang
+						const pagination = document.getElementById("category-pagination");
+						let html = '';
+						html += `<li class="page-item ${data.currentPage == 1 ? "disabled" : ""}">
+									<a class="page-link" href="#" data-page="${data.currentPage - 1}">Previous</a>
+								</li>`;
+						for (let i = 1; i <= data.totalPages; i++) {
+							html += `<li class="page-item ${i == data.currentPage ? "active" : ""}">
+										<a class="page-link" href="#" data-page="${i}">${i}</a>
+									</li>`;
+						}
+						html += `<li class="page-item ${data.currentPage == data.totalPages ? "disabled" : ""}">
+									<a class="page-link" href="#" data-page="${data.currentPage + 1}">Next</a>
+								</li>`;
+						pagination.innerHTML = html;
+					});
+				}
+			// Xử lý sự kiện click vào tên category
+		document.getElementById("category-list").addEventListener("click", function (e) {
+			if (e.target.classList.contains("category-link")) {
+				const categoryId = e.target.getAttribute("data-category-id");
+				loadBooksByCategory(categoryId);
+			}
+		});
+
+		function loadBooksByCategory(categoryId) {
+			fetch(`/Home/GetBooksByCategory?categoryId=${categoryId}`)
+				.then(response => response.json())
+				.then(data => {
+					const bookList = document.getElementById("book-list");
+					bookList.innerHTML = "";
+					data.forEach(item => {
+						const imgPath = `/img/book/${item.imageName}`;
+						bookList.innerHTML += `
+							<div class="col-md-3 col-sm-6">
+								<div class="mu-book-overview-single flex-column d-flex">
+									<a href="/BookDetail/Index?bookId=${item.bookId}">
+										<span class="mu-book-overview-icon-box">
+											<img src="${imgPath}" alt="${item.imageName}" width="150" height="200" />
+										</span>
+										<h4 style="height: 50px">${item.title}</h4>
+									</a>
+									<div class="row mt-auto">
+										<div class="col-md-8" style="color: red; font-weight:bolder; font-size: xx-large">
+											$ ${item.price}
+										</div>
+										<div class="col-md-4">
+											<button style="height:48px" class="btn btn-warning btn-add-to-cart" data-book-id="${item.bookId}" data-book-title="${item.title.replace(/"/g, '&quot;')}">
+												<i class="fa fa-cart-plus"></i>
+											</button>
+										</div>
+									</div>
+									<p></p>
+								</div>
+							</div>
+						`;
+					});
+				});
+		}
+			});
+	</script>

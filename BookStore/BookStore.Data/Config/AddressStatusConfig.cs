@@ -17,7 +17,7 @@ namespace BookStore.Data.Config
 
             builder.HasMany(ads => ads.CustomerAddresses)
                 .WithOne(ca => ca.AddressStatus)
-                .HasForeignKey(ca => ca.AddressId)
+                .HasForeignKey(ca => ca.StatusId)
                 .OnDelete(DeleteBehavior.NoAction);
         }
     }

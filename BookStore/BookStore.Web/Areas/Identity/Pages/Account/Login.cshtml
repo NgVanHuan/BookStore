@@ -1,0 +1,132 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: url('/img/Login.png') no-repeat center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+    }
+
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 85vh;
+    }
+
+    .login-form {
+        padding: 40px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .form-floating {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .form-floating input {
+        width: 100%;
+        padding: 20px 0 20px;
+        margin: 40px 0 0;
+        background: transparent;
+        border: 1px solid white;
+        color: white;
+        border-radius: 6px;
+    }
+
+    .form-floating label {
+        position: absolute;
+        top: -25px;
+        background-color: transparent;
+        color: white;
+        font-size: 14px;
+    }
+
+    .form-floating input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-floating input:focus {
+        outline: none;
+        border-color: #ddd;
+    }
+
+    .text-danger {
+        color: #fff;
+        font-size: 20px;
+    }
+
+    .btn {
+        margin-top: 10px;
+    }
+
+    #login-submit {
+        width: 100%;
+        padding: 8px;
+        background-color: white;
+        color: black;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #login-submit:hover {
+        background-color: #f0f0f0;
+    }
+
+    a {
+        color: white;
+        text-decoration: underline;
+    }
+
+    p {
+        text-align: center;
+    }
+</style>
+
+<div class="login-container">
+    <div class="login-form">
+        <form id="account" method="post">
+            <h2>Book Store</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Email" />
+                <label asp-for="Input.Email" class="form-label"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Password" />
+                <label asp-for="Input.Password" class="form-label"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div>
+                <button id="login-submit" type="submit">Log in</button>
+            </div>
+            <div>
+                <p><a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a></p>
+                @* <p><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a></p> *@
+                <p><a asp-area="Identity" asp-controller="Account" asp-action="Register">Register as a new user</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

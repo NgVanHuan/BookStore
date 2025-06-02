@@ -1,0 +1,93 @@
+﻿@model IEnumerable<BookStore.VModels.Books.BookViewModel>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Book</h1>
+    <p class="mb-4">
+        List Book.
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                <a asp-area="Admin" asp-controller="Book" asp-action="Create" type="button" class="btn btn-success">Create Book</a>
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="dataTable" class="table table-striped table-bordered" style="width:100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            @* <th>Book Id</th> *@
+                            <th>Title</th>
+                            <th>IBSN13</th>
+                            <th>Photo</th>
+                            <th>Book Language</th>
+                            <th>Num Pages</th>
+                            <th>Price</th>
+                            <th>Author Name</th>
+                            <th>Publication Date</th>
+                            <th>Category Name</th>
+                            <th>Publisher Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                @* <td>@item.BookId</td> *@
+                                <td>@item.Title</td>
+                                <td>@item.IBSN13</td>
+                                <td>
+                                    @{
+                                        String imgPath = "~/img/book/" + item.ImageName;
+                                    }
+                                    <img src="@Url.Content(imgPath)" alt="@item.ImageName" width="100" height="100" />
+                                </td>
+                                <td>@item.BookLanguage.LanguageName</td>
+                                <td>@item.NumPages</td>
+                                <td>@item.Price</td>
+                                <td>@item.AuthorNames</td>
+                                <td>@item.PublicationDate</td>
+                                <td>@item.Category.CategoryName</td>
+                                <td>@item.Publisher.PublisherName</td>
+                                <td>
+                                    @* <button type="button" class="btn btn-info">Info</button> *@
+                                    <a type="button" asp-area="Admin" asp-controller="Book" asp-action="Edit" asp-route-bookId="@item.BookId" class="btn btn-warning">Edit</a>
+                                    <a type="button" asp-area="Admin" asp-controller="Book" asp-action="Delete" asp-route-bookId="@item.BookId" class="btn btn-danger" onclick="return confirmDelete()">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            @* <th>Book Id</th> *@
+                            <th>Title</th>
+                            <th>IBSN13</th>
+                            <th>Photo</th>
+                            <th>Book Language</th>
+                            <th>Num Pages</th>
+                            <th>Price</th>
+                            <th>Author Name</th>
+                            <th>Publication Date</th>
+                            <th>Category Name</th>
+                            <th>Publisher Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+
+<script>
+    function confirmDelete() {
+        return confirm('Are you sure you want to delete this book?');
+    }
+</script>

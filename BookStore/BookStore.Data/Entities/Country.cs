@@ -10,7 +10,7 @@ namespace BookStore.Data.Entities
     public class Country : EntityBase
     {
         [Key]
-        public int CountryId { get; set; }
+        public Guid CountryId { get; set; }
         public string? CountryName { get; set; }
         public virtual IList<Address>? Addresses { get; set; }
     }

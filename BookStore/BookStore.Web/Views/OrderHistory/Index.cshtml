@@ -1,0 +1,110 @@
+﻿@model BookStore.Web.Controllers.OrderHistoryController.OrderHistoryViewModel
+@{
+    ViewData["Title"] = "Order History";
+    var stt = 1;
+}
+<section id="mu-cart-section" style="padding: 90px 0 0px">
+    <div class="container">
+        <h2 style="text-align: center; margin-top: 20px;">Order History</h2>
+        <hr />
+        @if (Model.CustomerOrders != null && Model.CustomerOrders.Any())
+        {
+            foreach (var order in Model.CustomerOrders.OrderByDescending(o => o.OrderDate))
+            {
+                string orderStatus = Model.OrderHistories.FirstOrDefault(oh => oh.OrderId == order.OrderId)?.OrderStatus?.StatusValue ?? "Unknown";
+                <div class="panel panel-default" style="margin-bottom: 30px;">
+                    <div class="panel-heading" style="background: #f5f5f5; padding: 10px 15px;">
+                        <strong>Order ID:</strong> @order.OrderId
+                        <span style="margin-left: 30px;"><strong>Order Date:</strong> @order.OrderDate.ToString("dd/MM/yyyy HH:mm")</span>
+                        <span style="margin-left: 30px;"><strong>Total Amount:</strong> @order.OrderLines?.Sum(ol => ol.Price * ol.Quantity).ToString("C")</span>
+                        <span style="margin-left: 30px;"><strong>Status:</strong> @orderStatus</span>
+
+                    </div>
+                    <div class="panel-body" style="padding: 0;">
+                        <table class="table table-bordered" style="margin-bottom: 0;">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var sttOrder = 1;
+                                }
+                                @foreach (var line in order.OrderLines)
+                                {
+                                    <tr>
+                                        <td>@sttOrder</td>
+                                        <td>
+                                            <a asp-controller="BookDetail" asp-action="Index" asp-route-bookId="@line.Book.BookId">
+                                                <img src="~/img/book/@line.Book.ImageName" alt="Book Image" style="width:50px; height:75px;" />
+                                            </a>
+                                        </td>
+                                        <td><a asp-controller="BookDetail" asp-action="Index" asp-route-bookId="@line.Book.BookId">@line.Book.Title</a></td>
+                                        <td>@line.Price.ToString("C")</td>
+                                        <td>@line.Quantity</td>
+                                        <td>@{string total = (line.Price * line.Quantity).ToString("C");}@total</td>
+                                    </tr>
+                                    sttOrder++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer" style="background: #fafafa; padding: 10px 15px; text-align: right">
+                        @if (orderStatus == "Pending")
+                        {
+                            <a asp-controller="OrderHistory" asp-action="ChangeCancelled" asp-route-orderId="@order.OrderId">
+                                <button class="btn btn-danger" type="button">Cancel</button>
+                            </a>
+                        }
+                        else if (orderStatus == "Cancelled")
+                        {
+                            <a asp-controller = "OrderHistory" asp-action="ChangeContinue" asp-route-orderId="@order.OrderId" >
+                                <button class="btn btn-warning" type="button">Continue</button>
+                            </a>
+                        }
+                        else if (orderStatus == "Shipped" && (DateTime.Now - order.OrderDate).TotalDays <= 3)
+                        {
+                            <a asp-controller="OrderHistory" asp-action="ChangeReturned" asp-route-orderId="@order.OrderId">
+                                <button class="btn btn-danger" type="button">Returned</button>
+                            </a>
+                        }
+                        else if (orderStatus == "Returned" && (DateTime.Now - order.OrderDate).TotalDays <= 3)
+                        {
+                            <a asp-controller="OrderHistory" asp-action="ChangeCancelReturned" asp-route-orderId="@order.OrderId">
+                                <button class="btn btn-warning" type="button">Cancel</button>
+                            </a>
+                        }
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No order history found.</p>
+        }
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Hide the hero section if on the book detail page
+        var isBookDetail = window.location.pathname.toLowerCase().includes("orderhistory");
+        if (isBookDetail) {
+            var heroLeft = document.querySelector("#mu-hero .mu-hero-left");
+            var heroRight = document.querySelector("#mu-hero .mu-hero-right");
+            var heroSection = document.getElementById("mu-hero");
+
+            if (heroLeft) heroLeft.style.display = "none";
+            if (heroRight) heroRight.style.display = "none";
+            if (heroSection) {
+                heroSection.style.padding = "90px 0 0";
+            }
+        }
+    });
+</script>

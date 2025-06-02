@@ -10,5 +10,6 @@ namespace BookStore.DataAccessLayer.IRepository
 {
     public interface IAddressRepository : IBaseRepository<Address>
     {
+        Address GetByIdWithCountry(Guid addressId);
     }
 }

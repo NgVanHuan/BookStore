@@ -1,0 +1,94 @@
+﻿@using BookStore.VModels.Books
+@model CreateBookViewModel
+
+<form method="post" asp-action="Create" style="width:90%; margin: 0 auto;" enctype="multipart/form-data">
+    <div class="border p-3 mt-4">
+        <div class="row pb-6">
+            <h2 class="text-primary">Create Book</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <input type="hidden" asp-for="@Model.BookVModel.BookId" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.BookVModel.Title">Title</label>
+            <input asp-for="@Model.BookVModel.Title" class="form-control" />
+            <span asp-validation-for="@Model.BookVModel.Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.BookVModel.IBSN13">IBSN13</label>
+            <input asp-for="@Model.BookVModel.IBSN13" class="form-control" />
+            <span asp-validation-for="@Model.BookVModel.IBSN13" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="d-block">Book Photo</label>
+            <img id="output" width="300" height="300" alt="Photo" src="~/img/book/defaultImage.jpg" onclick="document.getElementById('ufile').click()" style="cursor: pointer;" />
+            <input asp-for="@Model.BookVModel.ImageFile" id="ufile" type="file" style="display: none" onchange="loadFile(event)" />
+            <label id="fileLabel" asp-for="@Model.BookVModel.ImageFile" onclick="document.getElementById('ufile').click()" style="cursor: pointer;">Select book photo</label>
+            <span asp-validation-for="@Model.BookVModel.ImageFile" class="text-danger"></span>
+            <div id="fileName" style="margin-top: 10px; text-align: left;"></div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.BookVModel.LanguageId">Book Language</label>
+            <select asp-for="@Model.BookVModel.LanguageId" asp-items="@ViewBag.BookLanguageList" class="form-control">
+                <option disabled selected>--Select Book Language--</option>
+            </select>
+            <span asp-validation-for="@Model.BookVModel.LanguageId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.BookVModel.NumPages">Num Pages</label>
+            <input type="number" value="0" asp-for="@Model.BookVModel.NumPages" class="form-control" />
+            <span asp-validation-for="@Model.BookVModel.NumPages" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.BookVModel.Price">Price</label>
+            <input type="number" value="0" step="0.01" asp-for="@Model.BookVModel.Price" class="form-control" />
+            <span asp-validation-for="@Model.BookVModel.Price" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.BookVModel.PublicationDate">Publication Date</label>
+            <input type="date" asp-for="@Model.BookVModel.PublicationDate" class="form-control" />
+            <span asp-validation-for="@Model.BookVModel.PublicationDate" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.BookVModel.CategoryId">Category Name</label>
+            <select asp-for="@Model.BookVModel.CategoryId" asp-items="@ViewBag.CategoryList" class="form-control">
+                <option disabled selected>--Select Category--</option>
+            </select>
+            <span asp-validation-for="@Model.BookVModel.CategoryId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.BookVModel.PublisherId">Publisher</label>
+            <select asp-for="@Model.BookVModel.PublisherId" asp-items="@ViewBag.PublisherList" class="form-control">
+                <option disabled selected>--Select Publisher Name--</option>
+            </select>
+            <span asp-validation-for="@Model.BookVModel.PublisherId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.AuthorIds">Author Name</label>
+            <select asp-for="@Model.AuthorIds" asp-items="@ViewBag.AuthorList" class="form-control" multiple>
+                <option>--Select Authors--</option>
+            </select>
+            <span asp-validation-for="@Model.AuthorIds" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="Book" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+
+<script>
+    function loadFile(event) {
+        var image = document.getElementById('output');
+        var fileName = document.getElementById('fileName');
+        var fileLabel = document.getElementById('fileLabel');
+
+        if (event.target.files.length > 0) {
+            var file = event.target.files[0];
+            image.src = URL.createObjectURL(file);
+            fileName.innerText = file.name; // Hiển thị tên file dưới ảnh
+            fileLabel.style.display = 'none'; // Ẩn nút chọn ảnh sau khi chọn
+        }
+    }
+</script>

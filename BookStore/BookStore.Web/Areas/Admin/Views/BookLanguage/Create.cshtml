@@ -1,0 +1,26 @@
+﻿@using BookStore.VModels.BookLanguage
+@model BookLanguageViewModel
+
+<form method="post" asp-action="Create" style="width:90%; margin: 0 auto;" enctype="multipart/form-data">
+	<div class="border p-3 mt-4" >
+		<div class="row pb-6">
+			<h2 class="text-primary">Create Book Language</h2>
+			<hr />
+		</div>
+		@*<div asp-validation-summary="All"></div>*@
+		<div class="mb-3">
+			<label asp-for="LanguageCode">Language Code</label>
+			<input asp-for="LanguageCode" class="form-control" />
+			<span asp-validation-for="LanguageCode" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="LanguageName">Language Name</label>
+			<input asp-for="LanguageName" class="form-control" />
+			<span asp-validation-for="LanguageName" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+		<a asp-controller="BookLanguage" asp-action="Index" class="btn btn-secondary" style="width:150px">
+			Back to List
+		</a>
+	</div>
+</form>

@@ -8,9 +8,9 @@ namespace BookStore.Data.Entities
 {
     public class BookAuthor : EntityBase
     {
-        public int BookId { get; set; }
+        public Guid BookId { get; set; }
         public virtual Book? Book { get; set; }
-        public int AuthorId { get; set; }
+        public Guid AuthorId { get; set; }
         public virtual Author? Author { get; set; }
     }
 }

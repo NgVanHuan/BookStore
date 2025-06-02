@@ -1,0 +1,121 @@
+﻿@model BookDetailViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Book Detail";
+    string imgPath = "~/img/book/" + Model.BookDetail.ImageName;
+}
+
+<!-- Start main content -->
+<main role="main">
+    <!-- Start Book Detail Section -->
+    <section id="mu-book-detail">
+        <div class="container">
+            <div class="row" style="margin: 20px 0 0">
+                <div class="col-md-4">
+                    @{
+                        string imageUrl = Url.Content("~/img/book/" + Model.BookDetail.ImageName);
+                    }
+                    <img src="@imageUrl" alt="@Model.BookDetail.Title" class="img-responsive" style="width: 240px; height: auto;" />
+                </div>
+                <div class="col-md-8">
+                    <h2>@Model.BookDetail.Title</h2>
+                    <p>by: <strong style="color: blue">@Model.AuthorName</strong></p>
+                    <hr />
+                    <p style="color: red; font-weight:bolder; font-size: xx-large">$ @Model.BookDetail.Price</p>
+                    <hr />
+                    <p><strong style="font-weight: bolder">Category:</strong> @Model.BookDetail.Category.CategoryName</p>
+                    <p><strong style="font-weight: bolder">Publisher:</strong> @Model.BookDetail.Publisher.PublisherName</p>
+                    <p><strong style="font-weight: bolder">ISBN:</strong> @Model.BookDetail.IBSN13</p>
+                    <p><strong style="font-weight: bolder">Number of Pages:</strong> @Model.BookDetail.NumPages</p>
+                    <p><strong style="font-weight: bolder">Publication Date:</strong> @Model.BookDetail.PublicationDate.ToString("MM/dd/yyyy")</p>
+                    <hr />
+                    <a class="btn btn-warning btn-add-to-cart" data-book-id="@Model.BookDetail.BookId" onclick="addToCart('@Model.BookDetail.BookId')">
+                        <i class="fa fa-cart-plus"></i> Add to Cart
+                    </a>
+                </div>
+            </div>
+            <hr />
+
+                    <!-- Start Book Overview Content -->
+                    <div class="mu-book-overview-content" style="margin-top: 20px">
+                        <div class="mu-heading-area">
+                            <h2 class="mu-heading-title">Released Boooks</h2>
+                            <span class="mu-header-dot"></span>
+                        </div>
+                        <div class="row" id="book-list">
+                            @foreach (var item in Model.RelatedBooks)
+                            {
+                                <!-- Book Overview Single Content -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="mu-book-overview-single flex-column d-flex">
+                                        <a asp-controller="BookDetail" asp-action="Index" asp-route-bookId="@item.BookId">
+                                            <span class="mu-book-overview-icon-box">
+                                                @* <i class="fa fa-area-chart" aria-hidden="true"></i> *@
+                                                @{
+                                                    String imgPath2 = "~/img/book/" + item.ImageName;
+                                                }
+                                                <img src="@Url.Content(imgPath2)" alt="@item.ImageName" width="150" height="200" />
+                                            </span>
+                                            <h4 style="height: 50px">@item.Title</h4>
+                                        </a>
+                                        <div class="row mt-auto">
+                                            <div class="col-md-8" style="color: red; font-weight:bolder; font-size: xx-large">
+                                                $ @item.Price
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button style="height:48px" class="btn btn-warning btn-add-to-cart" data-book-id="@item.BookId" onclick="addToCart('@item.BookId')">
+                                                    <i class="fa fa-cart-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <!-- / Book Overview Single Content -->
+                            }
+                            <!-- / Book Overview Single Content -->
+                        </div>
+                    </div>
+                    <!-- End Book Overview Content -->
+
+        </div>
+    </section>
+<!-- End Book Detail Section -->
+</main>
+<!-- End main content -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+            // Xử lý sự kiện "Add to Cart"
+            document.querySelectorAll(".btn-add-to-cart").forEach(button => {
+                button.addEventListener("click", function () {
+                    const bookId = this.getAttribute("data-book-id");
+                    fetch('/Cart/AddToCart?bookId=' + bookId)
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Book added to cart!');
+                            location.reload(); // Reload the page to update cart count
+                            // updateCartCount();
+                        } else {
+                            alert('Failed to add book to cart.');
+                        }
+                    })
+                    .catch(error => console.error("Error adding to cart:", error));
+                });
+            });
+
+            // Hide the hero section if on the book detail page
+            var isBookDetail = window.location.pathname.toLowerCase().includes("bookdetail");
+            if (isBookDetail) {
+                var heroLeft = document.querySelector("#mu-hero .mu-hero-left");
+                var heroRight = document.querySelector("#mu-hero .mu-hero-right");
+                var heroSection = document.getElementById("mu-hero");
+
+                if (heroLeft) heroLeft.style.display = "none";
+                if (heroRight) heroRight.style.display = "none";
+                if (heroSection) {
+                    heroSection.style.padding = "90px 0 0";
+                }
+            }
+        });
+</script>

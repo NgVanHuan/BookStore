@@ -10,8 +10,8 @@ namespace BookStore.Data.Entities
     public class ShippingMethod : EntityBase
     {
         [Key]
-        public int MethodId { get; set; }
-        public int MethodName { get; set; }
+        public Guid MethodId { get; set; }
+        public string MethodName { get; set; }
         public int Code { get; set; }
         public virtual IList<CustomerOrder>? CustomerOrders { get; set; }
     }

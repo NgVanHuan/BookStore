@@ -1,0 +1,24 @@
+﻿@using BookStore.VModels.AddressStatus
+@model AddressStatusViewModel
+
+<form method="post" asp-area="Admin" asp-controller="AddressStatus" asp-action="Edit" style="width:90%; margin: 0 auto;" enctype="multipart/form-data">
+	<div class="border p-3 mt-4">
+		<div class="row pb-6">
+			<h2 class="text-primary">Edit AddressStatus</h2>
+			<hr />
+		</div>
+		@*<div asp-validation-summary="All"></div>*@
+		<div class="mb-3"></div>
+			<input type="hidden" asp-for="StatusId" />
+		</div>
+		<div class="mb-3">
+			<label asp-for="AddressStatusName">Address Status Name</label>
+			<input asp-for="AddressStatusName" class="form-control" />
+			<span asp-validation-for="AddressStatusName" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn btn-primary" style="width:150px">Edit</button>
+		<a asp-controller="AddressStatus" asp-action="Index" class="btn btn-secondary" style="width:150px">
+			Back to List
+		</a>
+	</div>
+</form>

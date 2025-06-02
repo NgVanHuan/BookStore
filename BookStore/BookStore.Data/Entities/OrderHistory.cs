@@ -10,10 +10,10 @@ namespace BookStore.Data.Entities
     public class OrderHistory : EntityBase
     {
         [Key]
-        public int HistoryId { get; set; }
-        public int OrderId { get; set; }
+        public Guid HistoryId { get; set; }
+        public Guid OrderId { get; set; }
         public virtual CustomerOrder? CustomerOrder { get; set; }
-        public int StatusId { get; set; }
+        public Guid StatusId { get; set; }
         public virtual OrderStatus? OrderStatus { get; set; }
         public DateTime StatusDate { get; set; }
     }

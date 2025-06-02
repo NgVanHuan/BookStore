@@ -10,7 +10,7 @@ namespace BookStore.Data.Entities
     public class AddressStatus : EntityBase
     {
         [Key]
-        public int StatusId { get; set; }
+        public Guid StatusId { get; set; }
         public string? AddressStatusName { get; set; }
         public virtual IList<CustomerAddress>? CustomerAddresses { get; set; }
     }

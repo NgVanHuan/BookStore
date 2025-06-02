@@ -1,0 +1,32 @@
+﻿@using BookStore.VModels.BookAuthor
+@model BookAuthorViewModel
+
+<form method="post" asp-action="Create" style="width:90%; margin: 0 auto;" enctype="multipart/form-data">
+    <div class="border p-3 mt-4">
+        <div class="row pb-6">
+            <h2 class="text-primary">Create Book</h2>
+            <hr />
+        </div>
+        @* <div class="mb-3"> *@
+        @*     <input type="hidden" asp-for="BookId" /> *@
+        @* </div> *@
+        <div class="mb-3">
+            <label asp-for="BookId">Book</label>
+            <select asp-for="BookId" asp-items="@ViewBag.BookList" class="form-control">
+                <option disabled selected>--Select Book--</option>
+            </select>
+            <span asp-validation-for="BookId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="AuthorId">Author</label>
+            <select asp-for="AuthorId" asp-items="@ViewBag.AuthorList" class="form-control">
+                <option disabled selected>--Select Author--</option>
+            </select>
+            <span asp-validation-for="AuthorId" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="BookAuthor" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>

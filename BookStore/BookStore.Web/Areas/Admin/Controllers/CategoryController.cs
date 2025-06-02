@@ -38,13 +38,47 @@ namespace BookStore.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category category)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+                category.CategoryId = Guid.NewGuid();
                 _unitOfWork.CategoryRepository.Add(category);
                 _unitOfWork.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ModelState.AddModelError("", "Data is not valid");
             return View(category);
+        }
+
+        public IActionResult Edit(Guid categoryId)
+        {
+            var tmpCategory = _unitOfWork.CategoryRepository.GetById(categoryId);
+            var category = _mapper.Map<Category, CategoryViewModel>(tmpCategory);
+            if (category == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(category);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Category category)
+        {
+            _unitOfWork.CategoryRepository.Update(category);
+            _unitOfWork.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(Guid categoryId) 
+        {
+            var category = _unitOfWork.CategoryRepository.GetById(categoryId);
+            if (category == null) 
+            {
+                return NotFound();
+            }
+            _unitOfWork.CategoryRepository.Remove(category);
+            _unitOfWork.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

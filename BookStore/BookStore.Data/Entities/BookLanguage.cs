@@ -8,7 +8,7 @@ namespace BookStore.Data.Entities
 {
     public class BookLanguage : EntityBase
     {
-        public int LanguageId { get; set; }
+        public Guid LanguageId { get; set; }
         public string? LanguageCode { get; set; }
         public string? LanguageName { get; set; }
         public virtual IList<Book>? Books { get; set; }

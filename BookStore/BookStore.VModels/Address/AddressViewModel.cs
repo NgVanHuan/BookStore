@@ -1,4 +1,7 @@
 ﻿using BookStore.Data.Entities;
+using BookStore.VModels.Country;
+using BookStore.VModels.CustomerAddress;
+using BookStore.VModels.CustomerOrder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +12,13 @@ namespace BookStore.VModels.Address
 {
     public class AddressViewModel
     {
-        public int AddressId { get; set; }
+        public Guid AddressId { get; set; }
         public string? StreetNumber { get; set; }
         public string? StreetName { get; set; }
         public string? City { get; set; }
-        public int CountryId { get; set; }
-        public virtual Country? Country { get; set; }
-        public virtual IList<CustomerAddress>? CustomerAddresses { get; set; }
-        public virtual IList<CustomerOrder>? CustomerOrders { get; set; }
+        public Guid CountryId { get; set; }
+        public virtual CountryViewModel? Country { get; set; }
+        public virtual List<CustomerAddressViewModel>? CustomerAddresses { get; set; }
+        public virtual List<CustomerOrderViewModel>? CustomerOrders { get; set; }
     }
 }

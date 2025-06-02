@@ -1,13 +1,16 @@
 ﻿using BookStore.Data.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace BookStore.Data.Context
 {
-    public class BookDbContext : DbContext
+    public class BookDbContext : IdentityDbContext<IdentityUser>
     {
-        public BookDbContext(DbContextOptions<BookDbContext> context) : base(context)
+        public BookDbContext(DbContextOptions<BookDbContext> options) : base(options)
         {
+            this.SeedData();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -15,9 +18,10 @@ namespace BookStore.Data.Context
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            modelBuilder.Seed();
+            //modelBuilder.Seed();
         }
 
+        public DbSet<Account> Accounts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<BookLanguage> BookLanguages { get; set; }
@@ -34,5 +38,7 @@ namespace BookStore.Data.Context
         public DbSet<CustomerOrder> CustomerOrders { get; set; }
         public DbSet<OrderLine> OrderLines { get; set; }
         public DbSet<OrderHistory> OrderHistories { get; set; }
+        //public DbSet<Cart> Carts { get; set; }
+        //public DbSet<CartItem> CartItems { get; set; }
     }
 }

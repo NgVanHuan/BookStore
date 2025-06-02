@@ -1,0 +1,112 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<BookStore.Web.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Your Cart";
+    var mess = TempData["SuccessMessage"];
+}
+
+<section id="mu-cart-section" style="padding: 90px 0 0px">
+    <div class="container">
+        <h3 style="padding: 375px 0 0">Your Cart</h3>
+        @if (!Model.Any())
+        {
+            <p>Your cart is empty.</p>
+            <a class="btn btn-warning" href="@Url.Content("~/")">Continue shopping</a>
+        }
+        else
+        {
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cartItem in Model)
+                    {
+                        <tr>
+                            <td><a asp-controller="BookDetail" asp-action="Index" asp-route-bookId="@cartItem.Books.BookId">@cartItem.Books.Title</a></td>
+                            <td>
+                                <a asp-controller="BookDetail" asp-action="Index" asp-route-bookId="@cartItem.Books.BookId">
+                                    <img src="~/img/book/@cartItem.Books.ImageName" alt="@cartItem.Books.Title" width="50" height="75" />
+                                </a>
+                            </td>
+                            <td>$ @cartItem.Books.Price</td>
+                            <td>@cartItem.Quantity</td>
+                            <td>
+                                <button class="btn btn-warning btn-add-to-cart" data-book-id="@cartItem.Books.BookId" onclick="addToCart('@cartItem.Books.BookId')">
+                                    <i class="fa fa-cart-plus"></i> Add
+                                </button>
+                                <button class="btn btn-danger btn-remove-from-cart" data-book-id="@cartItem.Books.BookId">
+                                    <i class="fa fa-trash"></i> Remove
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colspan="2">Total</th>
+                        @{
+                            var total = Model.Sum(b => b.Books.Price*b.Quantity);
+                        }
+                        <th colspan="2">@total</th>
+                        <th>
+                            <a asp-controller="Cart" asp-action="CheckOutAndClear">
+                                <button id="checkout-btn" class="btn btn-warning mt-3">Checkout</button>
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <a class="btn btn-warning" href="@Url.Content("~/")">Continue shopping</a>
+        }
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Xử lý sự kiện "Add to Cart"
+        document.querySelectorAll(".btn-add-to-cart").forEach(button => {
+            button.addEventListener("click", function () {
+                const bookId = this.getAttribute("data-book-id");
+                fetch('/Cart/AddToCart?bookId=' + bookId)
+                .then(response => {
+                    if (response.ok) {
+                        location.reload(); // Reload the page to update cart count
+                        // updateCartCount();
+                    } else {
+                        alert('Failed to add book to cart.');
+                    }
+                })
+                .catch(error => console.error("Error adding to cart:", error));
+            });
+        });
+        
+        // Xử lý sự kiện "Remove from Cart"
+        document.querySelectorAll(".btn-remove-from-cart").forEach(button => {
+            button.addEventListener("click", function () {
+                const bookId = this.getAttribute("data-book-id");
+                fetch('/Cart/RemoveFromCart?bookId=' + bookId)
+                .then(response => {
+                    if (response.ok){
+                        location.reload();
+                    }
+                })
+                .then(data => {
+                    if (data.success) {
+                        location.reload(); // Reload lại trang sau khi xóa
+                    }
+                })
+                .catch(error => console.error("Error removing from cart:", error));
+            });
+        });
+    });
+</script>

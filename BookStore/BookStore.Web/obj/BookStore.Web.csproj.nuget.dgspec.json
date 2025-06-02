@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Project\\BookStore\\BookStore\\BookStore.Web\\BookStore.Web.csproj": {}
+    "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Web\\BookStore.Web.csproj": {}
   },
   "projects": {
-    "F:\\Project\\BookStore\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj": {
+    "D:\\BaiTap\\BookStore\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Project\\BookStore\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj",
+        "projectUniqueName": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj",
         "projectName": "BookStore.DataAccessLayer",
-        "projectPath": "F:\\Project\\BookStore\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj",
+        "projectPath": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj",
         "packagesPath": "C:\\Users\\NVH\\.nuget\\packages\\",
-        "outputPath": "F:\\Project\\BookStore\\BookStore\\BookStore.DataAccessLayer\\obj\\",
+        "outputPath": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\NVH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "F:\\Project\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj": {
-                "projectPath": "F:\\Project\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj"
+              "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj": {
+                "projectPath": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj"
               }
             }
           }
@@ -38,7 +42,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net6.0": {
@@ -59,21 +69,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Project\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj": {
+    "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Project\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj",
+        "projectUniqueName": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj",
         "projectName": "BookStore.Data",
-        "projectPath": "F:\\Project\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj",
+        "projectPath": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj",
         "packagesPath": "C:\\Users\\NVH\\.nuget\\packages\\",
-        "outputPath": "F:\\Project\\BookStore\\BookStore\\BookStore.Data\\obj\\",
+        "outputPath": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\NVH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -93,12 +107,22 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.2, )"
@@ -118,6 +142,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.2, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             }
           },
           "imports": [
@@ -136,21 +168,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Project\\BookStore\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj": {
+    "D:\\BaiTap\\BookStore\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Project\\BookStore\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj",
+        "projectUniqueName": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj",
         "projectName": "BookStore.VModels",
-        "projectPath": "F:\\Project\\BookStore\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj",
+        "projectPath": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj",
         "packagesPath": "C:\\Users\\NVH\\.nuget\\packages\\",
-        "outputPath": "F:\\Project\\BookStore\\BookStore\\BookStore.VModels\\obj\\",
+        "outputPath": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.VModels\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\NVH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -164,8 +200,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "F:\\Project\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj": {
-                "projectPath": "F:\\Project\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj"
+              "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj": {
+                "projectPath": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj"
               }
             }
           }
@@ -174,11 +210,23 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -195,21 +243,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Project\\BookStore\\BookStore\\BookStore.Web\\BookStore.Web.csproj": {
+    "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Web\\BookStore.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Project\\BookStore\\BookStore\\BookStore.Web\\BookStore.Web.csproj",
+        "projectUniqueName": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Web\\BookStore.Web.csproj",
         "projectName": "BookStore.Web",
-        "projectPath": "F:\\Project\\BookStore\\BookStore\\BookStore.Web\\BookStore.Web.csproj",
+        "projectPath": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Web\\BookStore.Web.csproj",
         "packagesPath": "C:\\Users\\NVH\\.nuget\\packages\\",
-        "outputPath": "F:\\Project\\BookStore\\BookStore\\BookStore.Web\\obj\\",
+        "outputPath": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Web\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\NVH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -223,14 +275,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "F:\\Project\\BookStore\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj": {
-                "projectPath": "F:\\Project\\BookStore\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj"
+              "D:\\BaiTap\\BookStore\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj": {
+                "projectPath": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.DataAccessLayer\\BookStore.DataAccessLayer.csproj"
               },
-              "F:\\Project\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj": {
-                "projectPath": "F:\\Project\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj"
+              "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj": {
+                "projectPath": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.Data\\BookStore.Data.csproj"
               },
-              "F:\\Project\\BookStore\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj": {
-                "projectPath": "F:\\Project\\BookStore\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj"
+              "D:\\BaiTap\\BookStore\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj": {
+                "projectPath": "D:\\BaiTap\\BookStore\\BookStore\\BookStore.VModels\\BookStore.VModels.csproj"
               }
             }
           }
@@ -239,7 +291,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net6.0": {
@@ -251,7 +309,15 @@
             },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[12.0.0, )"
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.35, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.35, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -267,6 +333,10 @@
               "target": "Package",
               "version": "[7.0.2, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[6.0.35, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -275,7 +345,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[6.0.12, )"
+              "version": "[6.0.18, )"
             }
           },
           "imports": [
@@ -297,7 +367,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

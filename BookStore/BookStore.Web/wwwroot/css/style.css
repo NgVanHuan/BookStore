@@ -107,7 +107,7 @@ img {
 }
 
 strong {
-	font-weight: 500;
+	font-weight: bold;
 }
 
 code {
@@ -137,7 +137,6 @@ kbd {
 	background-color: #ddd;
 	padding: 4px 6px;
 	border-radius: 2px;
-	color: ;
 }
 
 address {
@@ -349,7 +348,14 @@ button:focus {
 #mu-hero {
 	display: inline;
 	float: left;
-	padding: 160px 0 90px;
+	padding: 90px 0 50px;
+	width: 100%;
+}
+
+#mu-hero-detail {
+	display: inline;
+	float: left;
+	padding: 0px 0 0px;
 	width: 100%;
 }
 
@@ -458,11 +464,31 @@ button:focus {
 /* BOOK OVERVIEW */
 /*--------------------*/
 
+#mu-category-overview {
+	background-color: #fff;
+	display: inline;
+	float: left;
+	width: 100%;
+}
+
+#mu-book-detail {
+	background-color: #f8f8f8;
+	display: inline;
+	float: left;
+	width: 100%;
+}
 
 #mu-book-overview {
 	background-color: #f8f8f8;
 	display: inline;
 	float: left;
+	width: 100%;
+}
+
+.mu-category-overview-area {
+	display: inline;
+	float: left;
+	padding: 100px 0;
 	width: 100%;
 }
 
@@ -510,6 +536,8 @@ button:focus {
 	background: #fff;
 	padding: 20px 10px;
 	margin: 10px 0 15px;
+	min-height: 400px;
+	max-height: max-content;
 }
 
 .mu-book-overview-icon-box {

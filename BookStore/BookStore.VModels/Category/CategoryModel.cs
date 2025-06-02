@@ -1,4 +1,5 @@
 ﻿using BookStore.Data.Entities;
+using BookStore.VModels.Books;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace BookStore.VModels.Category
 {
     public class CategoryModel : ModelBase
     {
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
         public string CategoryName { get; set; }
-        public virtual List<Book> Books { get; set; }
+        public virtual List<BookModel> Books { get; set; }
     }
 }

@@ -14,6 +14,21 @@ namespace BookStore.Data.Config
         public void Configure(EntityTypeBuilder<CustomerAddress> builder)
         {
             builder.HasKey(ca => new { ca.AddressId, ca.StatusId });
+
+            builder.HasOne(ca => ca.Customer)
+            .WithMany(c => c.CustomerAddresses)
+            .HasForeignKey(ca => ca.CustomerId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+            builder.HasOne(ca => ca.AddressStatus)
+                .WithMany(ads => ads.CustomerAddresses)
+                .HasForeignKey(ca => ca.StatusId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.HasOne(ca => ca.Address)
+                .WithMany(a => a.CustomerAddresses)
+                .HasForeignKey(ca => ca.AddressId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

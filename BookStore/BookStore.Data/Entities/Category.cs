@@ -8,7 +8,7 @@ namespace BookStore.Data.Entities
 {
     public class Category : EntityBase
     {
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
         public string CategoryName { get; set; }
         public virtual List<Book> Books { get; set; }
     }

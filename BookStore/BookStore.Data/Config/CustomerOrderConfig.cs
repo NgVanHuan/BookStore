@@ -15,14 +15,14 @@ namespace BookStore.Data.Config
         {
             builder.HasKey(co => co.OrderId);
 
-            builder.HasMany(co=>co.OrderLines)
-                .WithOne(ol=>ol.CustomerOrder)
-                .HasForeignKey(co=>co.OrderId)
+            builder.HasMany(co => co.OrderLines)
+                .WithOne(ol => ol.CustomerOrder)
+                .HasForeignKey(ol => ol.OrderId)
                 .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasMany(co => co.OrderHistories)
                 .WithOne(oh => oh.CustomerOrder)
-                .HasForeignKey(co => co.OrderId)
+                .HasForeignKey(oh => oh.OrderId)
                 .OnDelete(DeleteBehavior.NoAction);
         }
     }

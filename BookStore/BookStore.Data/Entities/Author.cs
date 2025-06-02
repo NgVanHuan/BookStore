@@ -8,7 +8,7 @@ namespace BookStore.Data.Entities
 {
     public class Author : EntityBase
     {
-        public int AuthorId { get; set; }
+        public Guid AuthorId { get; set; }
         public string? AuthorName { get; set; }
         public virtual IList<BookAuthor>? BookAuthors { get; set; }
     }
