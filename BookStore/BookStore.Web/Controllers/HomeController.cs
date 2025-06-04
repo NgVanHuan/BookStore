@@ -32,7 +32,7 @@ namespace BookStore.Web.Controllers
             public string CategoryName { get; set; }
         }
 
-        public async Task<IActionResult> Index(int page = 1)
+        public async Task<IActionResult> Index(int page = 1, Guid? categoryId = null)
         {
             const int pageSize = 4;
 
@@ -74,14 +74,24 @@ namespace BookStore.Web.Controllers
                 .Take(pageSize)
                 .ToList();
 
-            var books = await _unitOfWork.BookRepository.GetAll()
+            // Lấy danh sách sách theo category nếu có
+            var booksQuery = _unitOfWork.BookRepository.GetAll()
                 .Include(b => b.Category)
                 .Include(b => b.BookLanguage)
                 .Include(b => b.Publisher)
                 .Include(b => b.BookAuthors)
-                .Where(b => b.IsDeleted == false)
+                .Where(b => b.IsDeleted == false);
+
+            if (categoryId.HasValue && categoryId.Value != Guid.Empty)
+            {
+                booksQuery = booksQuery.Where(b => b.CategoryId == categoryId.Value);
+            }
+
+            var books = await booksQuery
+                .OrderBy(b => Guid.NewGuid())
                 .Take(24)
                 .ToListAsync();
+
             var listBook = _mapper.Map<IList<Book>, IList<BookViewModel>>(books);
 
             var viewModel = new HomePageViewModel
@@ -93,6 +103,56 @@ namespace BookStore.Web.Controllers
             };
 
             return View(viewModel);
+        }
+
+        [HttpGet]
+        public IActionResult SearchBooks(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                // Trả về tất cả sách nếu không có query
+                var allBooks = _unitOfWork.BookRepository
+                    .GetAll()
+                    .Where(b => !b.IsDeleted)
+                    .OrderBy(b => Guid.NewGuid())
+                    .Take(24)
+                    .Select(b => new
+                    {
+                        b.BookId,
+                        b.Title,
+                        b.ImageName,
+                        b.Price
+                    })
+                    .ToList();
+                return Json(allBooks);
+            }
+
+            query = query.ToLower();
+
+            var booksQuery = _unitOfWork.BookRepository
+                .GetAll()
+                .Include(b => b.Category)
+                .Include(b => b.BookAuthors)
+                    .ThenInclude(ba => ba.Author)
+                .Where(b => !b.IsDeleted);
+
+            var books = booksQuery
+                .Where(b =>
+                    b.Title.ToLower().Contains(query) ||
+                    b.Category.CategoryName.ToLower().Contains(query) ||
+                    b.BookAuthors.Any(ba => ba.Author.AuthorName.ToLower().Contains(query))
+                )
+                .Select(b => new
+                {
+                    b.BookId,
+                    b.Title,
+                    b.ImageName,
+                    b.Price
+                })
+                .Take(24)
+                .ToList();
+
+            return Json(books);
         }
 
         [HttpGet]
@@ -148,6 +208,7 @@ namespace BookStore.Web.Controllers
             var books = _unitOfWork.BookRepository
                 .GetAll()
                 .Where(b => b.CategoryId == categoryId && !b.IsDeleted)
+                .OrderBy(b => Guid.NewGuid())
                 .Take(24)
                 .Select(b => new
                 {

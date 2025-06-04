@@ -30,7 +30,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Identity/Account/Login";
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(15);
     options.Cookie.IsEssential = true;
     options.Cookie.HttpOnly = true;
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;

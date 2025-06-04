@@ -23,7 +23,12 @@
                     <hr />
                     <p style="color: red; font-weight:bolder; font-size: xx-large">$ @Model.BookDetail.Price</p>
                     <hr />
-                    <p><strong style="font-weight: bolder">Category:</strong> @Model.BookDetail.Category.CategoryName</p>
+                    <p><strong style="font-weight: bolder">Category:</strong> 
+                        @* @Model.BookDetail.Category.CategoryName *@
+                        <a href="@Url.Action("Index", "Home", new { categoryId = Model.BookDetail.Category.CategoryId })#mu-book-overview" style="color: orange; font-weight: bold; text-decoration: underline; cursor: pointer;">
+                            @Model.BookDetail.Category.CategoryName
+                        </a>
+                    </p>
                     <p><strong style="font-weight: bolder">Publisher:</strong> @Model.BookDetail.Publisher.PublisherName</p>
                     <p><strong style="font-weight: bolder">ISBN:</strong> @Model.BookDetail.IBSN13</p>
                     <p><strong style="font-weight: bolder">Number of Pages:</strong> @Model.BookDetail.NumPages</p>
@@ -110,7 +115,13 @@
                 var heroLeft = document.querySelector("#mu-hero .mu-hero-left");
                 var heroRight = document.querySelector("#mu-hero .mu-hero-right");
                 var heroSection = document.getElementById("mu-hero");
+                var mu_category_overview = document.querySelector("#category-overview");
+                var mu_book_overview = document.querySelector("#book-overview");
+                var mu_contact_overview = document.querySelector("#contact-overview");
 
+                if (mu_category_overview) mu_category_overview.style.display = "none";
+                if (mu_book_overview) mu_book_overview.style.display = "none";
+                if (mu_contact_overview) mu_contact_overview.style.display = "none";
                 if (heroLeft) heroLeft.style.display = "none";
                 if (heroRight) heroRight.style.display = "none";
                 if (heroSection) {

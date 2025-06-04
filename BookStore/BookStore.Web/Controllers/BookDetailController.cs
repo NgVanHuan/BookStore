@@ -39,7 +39,7 @@ namespace BookStore.Web.Controllers
                 return NotFound();
             }
             var bookCategory = _unitOfWork.CategoryRepository.GetById(bookViewModel.CategoryId);
-            var releasedBook = _unitOfWork.BookRepository.GetAll().Where(b => b.CategoryId == bookCategory.CategoryId && b.BookId != bookViewModel.BookId).Take(4).ToList();
+            var releasedBook = _unitOfWork.BookRepository.GetAll().Where(b => b.CategoryId == bookCategory.CategoryId && b.BookId != bookViewModel.BookId).OrderBy(b => Guid.NewGuid()).Take(4).ToList();
             var listReleasedBook = _mapper.Map<List<Book>, List<BookViewModel>>(releasedBook);
             var bookDetail = new BookDetailViewModel { BookDetail = bookViewModel, AuthorName = author.AuthorName, RelatedBooks = listReleasedBook };
             return View(bookDetail);

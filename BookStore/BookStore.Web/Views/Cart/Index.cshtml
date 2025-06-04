@@ -14,7 +14,7 @@
         @if (!Model.Any())
         {
             <p>Your cart is empty.</p>
-            <a class="btn btn-warning" href="@Url.Content("~/")">Continue shopping</a>
+            <a class="btn btn-warning" href="@Url.Content("~/")#mu-book-overview">Continue shopping</a>
         }
         else
         {
@@ -108,5 +108,16 @@
                 .catch(error => console.error("Error removing from cart:", error));
             });
         });
+
+        var isCartIndex = window.location.pathname.toLowerCase().includes("cart");
+            if (isCartIndex) {
+                var mu_category_overview = document.querySelector("#category-overview");
+                var mu_book_overview = document.querySelector("#book-overview");
+                var mu_contact_overview = document.querySelector("#contact-overview");
+
+                if (mu_category_overview) mu_category_overview.style.display = "none";
+                if (mu_book_overview) mu_book_overview.style.display = "none";
+                if (mu_contact_overview) mu_contact_overview.style.display = "none";
+            }
     });
 </script>

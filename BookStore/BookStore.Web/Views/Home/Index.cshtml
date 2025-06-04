@@ -152,15 +152,25 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="mu-book-overview-area">
-
 						<div class="mu-heading-area">
 							<h2 class="mu-heading-title">Available Books</h2>
 							<span class="mu-header-dot"></span>
 							<p>The books currently available for you to choose and enjoy.</p>
 						</div>
 
+						<div class="justify-content-center">
+							<div class="row col-md-12" style="display: grid">
+								<div class="input-group" style="display: flex">
+									<input type="text" id="book-search-input" class="form-control col-10" placeholder="Search by title, author, or category...">
+									<button id="book-search-btn" class="btn btn-warning" type="button">
+										<i class="fa fa-search"></i>&nbsp;Search
+									</button>
+								</div>
+							</div>
+						</div>
+
 						<!-- Start Book Overview Content -->
-						<div class="mu-book-overview-content">
+						<div class="mu-book-overview-content" style="margin-top: 20px">
 							<div class="row" id="book-list">
 								@foreach (var item in Model.Books)
 								{
@@ -214,7 +224,7 @@
 						<div class="mu-heading-area">
 							<h2 class="mu-heading-title">Check Out Our Video Review</h2>
 							<span class="mu-header-dot"></span>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+							<p>Watch our latest video review to get insights and expert opinions on the product. Discover its features, benefits, and why it stands out!</p>
 						</div>
 
 						<!-- Start Video Review Content -->
@@ -284,9 +294,9 @@
 					<div class="mu-pricing-area">
 
 						<div class="mu-heading-area">
-							<h2 class="mu-heading-title">Our Pricing Plans</h2>
+							<h2 class="mu-heading-title">Member Registration</h2>
 							<span class="mu-header-dot"></span>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+							<p>Join now to receive exclusive benefits and the latest updates!</p>
 						</div>
 
 						<!-- Start Pricing Content -->
@@ -298,17 +308,17 @@
 									<div class="mu-pricing-single">
 
 										<div class="mu-pricing-single-head">
-											<h4>STANDARD PLAN</h4>
+											<h4>Basic Membership (Free)</h4>
 											<p class="mu-price-tag">
-												<span>$</span> 15
+												<span>$</span> 0
 											</p>
 										</div>
 
 										<ul class="mu-price-feature">
-											<li> Lorem ipsum dolor sit amet. </li>
-											<li> Lorem ipsum dolor sit amet. </li>
-											<li> Lorem ipsum dolor sit amet. </li>
-											<li> Lorem ipsum dolor sit amet. </li>
+											<li> Access to basic content. </li>
+											<li> Receive periodic newsletters. </li>
+											<li> 5% discount on first purchase. </li>
+											<li> Early access to promotional offers. </li>
 										</ul>
 
 										<div class="mu-pricing-single-footer">
@@ -324,17 +334,17 @@
 
 
 										<div class="mu-pricing-single-head">
-											<h4>PROFESSIONAL PLAN</h4>
+											<h4>Advanced Membership (Paid)</h4>
 											<p class="mu-price-tag">
-												<span>$</span> 25
+												<span>$</span> 15
 											</p>
 										</div>
 
 										<ul class="mu-price-feature">
-											<li> Lorem ipsum dolor sit amet. </li>
-											<li> Lorem ipsum dolor sit amet. </li>
-											<li> Lorem ipsum dolor sit amet. </li>
-											<li> Lorem ipsum dolor sit amet. </li>
+											<li> All benefits of Basic Membership. </li>
+											<li> 10% discount on all orders. </li>
+											<li> Access to exclusive content. </li>
+											<li> Priority customer support. </li>
 										</ul>
 
 										<div class="mu-pricing-single-footer">
@@ -351,17 +361,17 @@
 
 
 										<div class="mu-pricing-single-head">
-											<h4>EXCLUSIVE PLAN</h4>
+											<h4>VIP Membership (Premium Paid)</h4>
 											<p class="mu-price-tag">
-												<span>$</span> 45
+												<span>$</span> 30
 											</p>
 										</div>
 
 										<ul class="mu-price-feature">
-											<li> Lorem ipsum dolor sit amet. </li>
-											<li> Lorem ipsum dolor sit amet. </li>
-											<li> Lorem ipsum dolor sit amet. </li>
-											<li> Lorem ipsum dolor sit amet. </li>
+											<li> All benefits of Advanced Membership. </li>
+											<li> 15% discount on all orders. </li>
+											<li> Special monthly gifts. </li>
+											<li> Access to VIP events. </li>
 										</ul>
 
 										<div class="mu-pricing-single-footer">
@@ -399,21 +409,25 @@
 							<ul class="mu-testimonial-slide">
 
 								<li>
-									<p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever."</p>
+									<p>"This bookstore offers a wide range of titles, from literature and economics to self-improvement books. 
+										The staff is very helpful in recommending the right book for me. Prices are reasonable, and delivery is fast. 
+										I’ll definitely keep supporting this store!"</p>
 									<img class="mu-rt-img" src="assets/images/reader-1.jpg" alt="img">
 									<h5 class="mu-rt-name"> - Alice Boga</h5>
 									<span class="mu-rt-title">CEO, Apple Inc.</span>
 								</li>
 
 								<li>
-									<p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever."</p>
+									<p>"The bookstore has a beautiful and comfortable space where I can spend hours reading before deciding on a purchase. 
+										The quality of the books is great, but some popular titles sell out quickly. I hope they stock more new books soon!"</p>
 									<img class="mu-rt-img" src="assets/images/reader-2.jpg" alt="img">
 									<h5 class="mu-rt-name"> - Jhon Doe</h5>
 									<span class="mu-rt-title">Director, Google Inc.</span>
 								</li>
 
 								<li>
-									<p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever."</p>
+									<p>"Excellent customer service! I ordered books online and received them on time, well-packaged. 
+										The store also has many attractive promotions. I'm very satisfied with my shopping experience here!"</p>
 									<img class="mu-rt-img" src="assets/images/reader-3.jpg" alt="img">
 									<h5 class="mu-rt-name"> - Jessica Doe</h5>
 									<span class="mu-rt-title">Web Developer</span>
@@ -439,7 +453,7 @@
 						<div class="mu-heading-area">
 							<h2 class="mu-heading-title">Drop Us A Message</h2>
 							<span class="mu-header-dot"></span>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+							<p>We look forward to hearing from you! Please fill out the form below to send us a message.</p>
 						</div>
 
 						<!-- Start Contact Content -->
@@ -622,4 +636,50 @@
 				});
 		}
 			});
+			// Xử lý sự kiện tìm kiếm sách
+	document.getElementById("book-search-btn").addEventListener("click", function () {
+		const query = document.getElementById("book-search-input").value.trim();
+		searchBooks(query);
+	});
+	document.getElementById("book-search-input").addEventListener("keypress", function (e) {
+		if (e.key === "Enter") {
+			const query = document.getElementById("book-search-input").value.trim();
+			searchBooks(query);
+		}
+	});
+
+	function searchBooks(query) {
+		fetch(`/Home/SearchBooks?query=${encodeURIComponent(query)}`)
+			.then(response => response.json())
+			.then(data => {
+				const bookList = document.getElementById("book-list");
+				bookList.innerHTML = "";
+				data.forEach(item => {
+					const imgPath = `/img/book/${item.imageName}`;
+					bookList.innerHTML += `
+						<div class="col-md-3 col-sm-6">
+							<div class="mu-book-overview-single flex-column d-flex">
+								<a href="/BookDetail/Index?bookId=${item.bookId}">
+									<span class="mu-book-overview-icon-box">
+										<img src="${imgPath}" alt="${item.imageName}" width="150" height="200" />
+									</span>
+									<h4 style="height: 50px">${item.title}</h4>
+								</a>
+								<div class="row mt-auto">
+									<div class="col-md-8" style="color: red; font-weight:bolder; font-size: xx-large">
+										$ ${item.price}
+									</div>
+									<div class="col-md-4">
+										<button style="height:48px" class="btn btn-warning btn-add-to-cart" data-book-id="${item.bookId}" data-book-title="${item.title.replace(/"/g, '&quot;')}">
+											<i class="fa fa-cart-plus"></i>
+										</button>
+									</div>
+								</div>
+								<p></p>
+							</div>
+						</div>
+					`;
+				});
+			});
+	}
 	</script>
