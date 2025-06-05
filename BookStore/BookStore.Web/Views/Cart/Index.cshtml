@@ -54,11 +54,34 @@
                 <thead>
                     <tr>
                         <th colspan="2">Total</th>
-                        @{
-                            var total = Model.Sum(b => b.Books.Price*b.Quantity);
-                        }
-                        <th colspan="2">@total</th>
+                        <th colspan="2">
+                            @if (ViewBag.DiscountPercent > 0)
+                            {
+                                <span style="color: red; text-decoration: line-through">
+                                    @ViewBag.Total.ToString("C")
+                                </span>
+                            }
+                            else
+                            {
+                                <span style="color: red">
+                                    @ViewBag.Total.ToString("C")
+                                </span>
+                            }
+                            @if (ViewBag.DiscountPercent > 0)
+                            {
+                                <div>
+                                    <span class="text-success">
+                                        Discount: @ViewBag.DiscountPercent% (-@ViewBag.DiscountAmount.ToString("C"))
+                                    </span>
+                                    <br />
+                                    <strong>Total after discount: <span style="color: red; text-decoration: underline">@ViewBag.TotalAfterDiscount.ToString("C")</span></strong>
+                                </div>
+                            }
+                        </th>
                         <th>
+                            <div style="font-size: 0.9em; color: #888; margin-bottom: 5px;">
+                                Orders over $30 get 5% off, plus 1% for each $10 more, up to 10% max.
+                            </div>
                             <a asp-controller="Cart" asp-action="CheckOutAndClear">
                                 <button id="checkout-btn" class="btn btn-warning mt-3">Checkout</button>
                             </a>
@@ -66,7 +89,7 @@
                     </tr>
                 </thead>
             </table>
-            <a class="btn btn-warning" href="@Url.Content("~/")">Continue shopping</a>
+            <a class="btn btn-warning" href="@Url.Content("~/")#mu-book-overview">Continue shopping</a>
         }
     </div>
 </section>

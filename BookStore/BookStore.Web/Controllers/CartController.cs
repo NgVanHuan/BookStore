@@ -52,7 +52,23 @@ namespace BookStore.Web.Controllers
                 Quantity = quantityMap[book.BookId]
             }).ToList();
 
-            
+            // Tính tổng tiền
+            decimal total = cartList.Sum(b => (b.Books.Price ?? 0) * b.Quantity);
+
+            // Tính giảm giá
+            decimal discountPercent = 0;
+            if (total >= 30)
+            {
+                discountPercent = Math.Min(10, 5 + (int)((total - 30) / 10) * 1);
+            }
+            decimal discountAmount = total * (discountPercent / 100);
+            decimal totalAfterDiscount = total - discountAmount;
+
+            ViewBag.Total = total;
+            ViewBag.DiscountPercent = discountPercent;
+            ViewBag.DiscountAmount = discountAmount;
+            ViewBag.TotalAfterDiscount = totalAfterDiscount;
+
             return View(cartList);
         }
 

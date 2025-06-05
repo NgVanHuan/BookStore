@@ -1,2 +1,16 @@
 ﻿<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var isCartIndex = window.location.pathname.toLowerCase().includes("account");
+            if (isCartIndex) {
+                var mu_category_overview = document.querySelector("#category-overview");
+                var mu_book_overview = document.querySelector("#book-overview");
+                var mu_contact_overview = document.querySelector("#contact-overview");
+
+                if (mu_category_overview) mu_category_overview.style.display = "none";
+                if (mu_book_overview) mu_book_overview.style.display = "none";
+                if (mu_contact_overview) mu_contact_overview.style.display = "none";
+            }
+    });
+</script>

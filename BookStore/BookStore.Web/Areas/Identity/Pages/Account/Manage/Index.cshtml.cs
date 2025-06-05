@@ -98,6 +98,10 @@ namespace BookStore.Web.Areas.Identity.Pages.Account.Manage
             }
 
             await LoadAsync(user);
+
+            // Clear status message when just visiting the page
+            StatusMessage = null;
+
             return Page();
         }
 
@@ -139,6 +143,14 @@ namespace BookStore.Web.Areas.Identity.Pages.Account.Manage
                 .FirstOrDefault(ca => ca.CustomerId == customer.CustomerId);
             if (customerAddress == null)
             {
+                // Ki?m tra country ?ã t?n t?i ch?a
+                var countryEntity = await _dbContext.Countries.FirstOrDefaultAsync(c => c.CountryName == country);
+                if (countryEntity == null)
+                {
+                    countryEntity = new Country { CountryId = Guid.NewGuid(), CountryName = country };
+                    _dbContext.Countries.Add(countryEntity);
+                    await _dbContext.SaveChangesAsync();
+                }
                 customerAddress = new CustomerAddress
                 {
                     CustomerId = customer.CustomerId,
@@ -147,7 +159,8 @@ namespace BookStore.Web.Areas.Identity.Pages.Account.Manage
                         StreetNumber = streetNumber,
                         StreetName = streetName,
                         City = city,
-                        Country = new Country { CountryName = country }
+                        CountryId = countryEntity.CountryId,
+                        Country = countryEntity
                     },
                     AddressStatus = _dbContext.AddressStatuses.FirstOrDefault(ads => ads.AddressStatusName == "Active")
                 };
@@ -156,10 +169,18 @@ namespace BookStore.Web.Areas.Identity.Pages.Account.Manage
             }
             else
             {
+                var countryEntity = await _dbContext.Countries.FirstOrDefaultAsync(c => c.CountryName == country);
+                if (countryEntity == null)
+                {
+                    countryEntity = new Country { CountryId = Guid.NewGuid(), CountryName = country };
+                    _dbContext.Countries.Add(countryEntity);
+                    await _dbContext.SaveChangesAsync();
+                }
                 customerAddress.Address.StreetNumber = streetNumber;
                 customerAddress.Address.StreetName = streetName;
                 customerAddress.Address.City = city;
-                customerAddress.Address.Country.CountryName = country;
+                customerAddress.Address.CountryId = countryEntity.CountryId;
+                customerAddress.Address.Country = countryEntity;
                 _dbContext.CustomerAddresses.Update(customerAddress);
                 await _dbContext.SaveChangesAsync();
             }

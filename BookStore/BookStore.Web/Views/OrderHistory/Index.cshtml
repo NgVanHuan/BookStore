@@ -2,6 +2,20 @@
 @{
     ViewData["Title"] = "Order History";
     var stt = 1;
+    @functions {
+        decimal GetDiscountPercent(decimal total)
+        {
+            if (total <= 30) return 0;
+            var extra = Math.Floor((total - 30) / 10);
+            var percent = 5 + (int)extra;
+            return Math.Min(percent, 10);
+        }
+        decimal GetTotalAfterDiscount(decimal total)
+        {
+            var discountPercent = GetDiscountPercent(total);
+            return total - (total * discountPercent / 100);
+        }
+    }
 }
 <section id="mu-cart-section" style="padding: 90px 0 0px">
     <div class="container">
@@ -15,9 +29,27 @@
                 <div class="panel panel-default" style="margin-bottom: 30px;">
                     <div class="panel-heading" style="background: #f5f5f5; padding: 10px 15px;">
                         <strong>Order ID:</strong> @order.OrderId
-                        <span style="margin-left: 30px;"><strong>Order Date:</strong> @order.OrderDate.ToString("dd/MM/yyyy HH:mm")</span>
-                        <span style="margin-left: 30px;"><strong>Total Amount:</strong> @order.OrderLines?.Sum(ol => ol.Price * ol.Quantity).ToString("C")</span>
                         <span style="margin-left: 30px;"><strong>Status:</strong> @orderStatus</span>
+                        <span style="margin-left: 30px;"><strong>Order Date:</strong> @order.OrderDate.ToString("dd/MM/yyyy HH:mm")</span>
+                        @{
+                            var orderTotal = order.OrderLines?.Sum(ol => ol.Price * ol.Quantity) ?? 0;
+                            var discountPercent = GetDiscountPercent(orderTotal);
+                            var totalAfterDiscount = GetTotalAfterDiscount(orderTotal);
+                            var totalDiscountAmount = orderTotal * discountPercent / 100;
+                        }
+                        <br />
+                        <span>
+                            <strong>Total Amount:</strong>
+                            <span style="color: red; font-weight: bolder">
+                                @totalAfterDiscount.ToString("C")
+                            </span>
+                            @if (discountPercent > 0)
+                            {
+                                <span class="text-success">
+                                    (Discount: @discountPercent% ( <strong>@orderTotal.ToString("C") - @totalDiscountAmount.ToString("C")</strong>)
+                                </span>
+                            }
+                        </span>
 
                     </div>
                     <div class="panel-body" style="padding: 0;">

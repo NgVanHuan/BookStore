@@ -1,0 +1,373 @@
+[
+  {
+    "country": "Vietnam",
+    "cities": [
+      {
+        "city": "Hanoi",
+        "streets": [
+          "Kim Ma",
+          "Pham Van Dong",
+          "Hoang Quoc Viet",
+          "Hang Bong",
+          "Trang Thi",
+          "Nguyen Chi Thanh",
+          "Hang Gai",
+          "Hang Bac",
+          "Hang Dao",
+          "Cau Go",
+          "Ba Trieu",
+          "Ly Thuong Kiet",
+          "Pho Hue",
+          "Hai Ba Trung",
+          "Tran Phu",
+          "Dien Bien Phu",
+          "Le Duan",
+          "Nguyen Thai Hoc",
+          "Giang Vo",
+          "Lang Ha",
+          "Thanh Xuan"
+        ]
+      },
+      {
+        "city": "Ho Chi Minh City",
+        "streets": [
+          "Le Loi",
+          "Nguyen Hue",
+          "Tran Hung Dao",
+          "Bui Vien",
+          "Nguyen Trai",
+          "Cach Mang Thang Tam",
+          "Dong Khoi",
+          "Hai Ba Trung",
+          "Nguyen Thi Minh Khai",
+          "Le Duan",
+          "Nam Ky Khoi Nghia",
+          "Ton Duc Thang",
+          "Vo Van Tan",
+          "Ly Tu Trong",
+          "Pham Ngoc Thach",
+          "Nguyen Dinh Chieu",
+          "Nguyen Van Cu",
+          "Hoang Sa",
+          "Truong Sa",
+          "Le Van Sy"
+        ]
+      },
+      {
+        "city": "Da Nang",
+        "streets": [
+          "Tran Phu",
+          "Bach Dang",
+          "Le Duan",
+          "Hung Vuong",
+          "Nguyen Van Linh",
+          "Ham Nghi",
+          "Ton Duc Thang",
+          "Nguyen Chi Thanh",
+          "Tran Hung Dao",
+          "Ly Thuong Kiet"
+        ]
+      }
+    ]
+  },
+  {
+    "country": "United States",
+    "cities": [
+      {
+        "city": "New York",
+        "streets": [
+          "5th Avenue",
+          "Broadway",
+          "Wall Street",
+          "Madison Avenue",
+          "Park Avenue",
+          "Lexington Avenue",
+          "Canal Street",
+          "Houston Street",
+          "42nd Street",
+          "Times Square"
+        ]
+      },
+      {
+        "city": "Los Angeles",
+        "streets": [
+          "Sunset Blvd",
+          "Hollywood Blvd",
+          "Melrose Ave",
+          "Rodeo Drive",
+          "Mulholland Drive",
+          "Santa Monica Blvd",
+          "Wilshire Blvd",
+          "La Cienega Blvd",
+          "Beverly Blvd",
+          "Abbot Kinney Boulevard"
+        ]
+      },
+      {
+        "city": "San Francisco",
+        "streets": [
+          "Lombard Street",
+          "Market Street",
+          "Powell Street",
+          "Union Street",
+          "Haight Street",
+          "Fillmore Street",
+          "Castro Street",
+          "Embarcadero",
+          "Van Ness Avenue",
+          "Geary Street"
+        ]
+      }
+    ]
+  },
+  {
+    "country": "France",
+    "cities": [
+      {
+        "city": "Paris",
+        "streets": [
+          "Champs-Élysées",
+          "Rue de Rivoli",
+          "Avenue Montaigne",
+          "Boulevard Saint-Germain",
+          "Rue de Rennes",
+          "Rue de la Paix",
+          "Rue du Faubourg Saint-Honoré",
+          "Rue Saint-Honoré",
+          "Rue Royale",
+          "Avenue Victor Hugo"
+        ]
+      },
+      {
+        "city": "Nice",
+        "streets": [
+          "Promenade des Anglais",
+          "Avenue Jean Médecin",
+          "Rue de France",
+          "Cours Saleya",
+          "Rue de la Liberté",
+          "Boulevard Victor Hugo",
+          "Avenue Félix Faure",
+          "Rue de l'Hôtel des Postes",
+          "Rue de l'Hôtel de Ville",
+          "Quai des États-Unis"
+        ]
+      },
+      {
+        "city": "Lyon",
+        "streets": [
+          "Rue de la République",
+          "Rue Mercière",
+          "Place Bellecour",
+          "Rue de Brest",
+          "Rue du Président Édouard Herriot",
+          "Quai Romain Rolland",
+          "Rue Auguste Comte",
+          "Rue de la Barre",
+          "Rue du Plat",
+          "Place des Terreaux"
+        ]
+      }
+    ]
+  },
+  {
+    "country": "Japan",
+    "cities": [
+      {
+        "city": "Tokyo",
+        "streets": [
+          "Ginza",
+          "Shibuya",
+          "Shinjuku",
+          "Takeshita Street",
+          "Nakamise-dori",
+          "Kappabashi Street",
+          "Ameyoko Street",
+          "Yaesu Street",
+          "Ningyocho Street",
+          "Akasaka"
+        ]
+      },
+      {
+        "city": "Kyoto",
+        "streets": [
+          "Kawaramachi Street",
+          "Shijo Street",
+          "Pontocho",
+          "Philosopher’s Path",
+          "Teramachi Shopping Street",
+          "Nishiki Market",
+          "Sanneizaka",
+          "Ninen-zaka",
+          "Kiyamachi Street",
+          "Shinkyogoku Street"
+        ]
+      },
+      {
+        "city": "Osaka",
+        "streets": [
+          "Shinsaibashi",
+          "Dotonbori",
+          "Namba",
+          "Umeda",
+          "Tenma",
+          "Kitashinchi",
+          "Hommachi",
+          "Midosuji",
+          "Amerikamura",
+          "Nakanoshima"
+        ]
+      }
+    ]
+  },
+  {
+    "country": "United Kingdom",
+    "cities": [
+      {
+        "city": "London",
+        "streets": [
+          "Oxford Street",
+          "Regent Street",
+          "Piccadilly",
+          "Carnaby Street",
+          "King's Road",
+          "Portobello Road",
+          "Brick Lane",
+          "Abbey Road",
+          "Fleet Street",
+          "The Strand"
+        ]
+      },
+      {
+        "city": "Edinburgh",
+        "streets": [
+          "Royal Mile",
+          "Princes Street",
+          "George Street",
+          "Victoria Street",
+          "Grassmarket",
+          "Rose Street",
+          "Dean Village",
+          "Circus Lane",
+          "Broughton Street",
+          "Stockbridge"
+        ]
+      },
+      {
+        "city": "Manchester",
+        "streets": [
+          "Deansgate",
+          "Oxford Road",
+          "Peter Street",
+          "Corporation Street",
+          "King Street",
+          "Market Street",
+          "Portland Street",
+          "Mosley Street",
+          "St Ann's Square",
+          "New Cathedral Street"
+        ]
+      }
+    ]
+  },
+  {
+    "country": "Australia",
+    "cities": [
+      {
+        "city": "Sydney",
+        "streets": [
+          "George Street",
+          "Pitt Street Mall",
+          "Martin Place",
+          "Oxford Street",
+          "King Street",
+          "Crown Street",
+          "Darling Street",
+          "Bondi Road",
+          "Military Road",
+          "Newtown Street"
+        ]
+      },
+      {
+        "city": "Melbourne",
+        "streets": [
+          "Bourke Street",
+          "Collins Street",
+          "Swanston Street",
+          "Flinders Lane",
+          "Lygon Street",
+          "Chapel Street",
+          "Acland Street",
+          "Smith Street",
+          "Gertrude Street",
+          "Brunswick Street"
+        ]
+      },
+      {
+        "city": "Brisbane",
+        "streets": [
+          "Queen Street",
+          "Ann Street",
+          "George Street",
+          "Adelaide Street",
+          "Albert Street",
+          "Edward Street",
+          "Mary Street",
+          "Elizabeth Street",
+          "Charlotte Street",
+          "Creek Street"
+        ]
+      }
+    ]
+  },
+  {
+    "country": "Brazil",
+    "cities": [
+      {
+        "city": "Rio de Janeiro",
+        "streets": [
+          "Avenida Rio Branco",
+          "Rua do Ouvidor",
+          "Avenida Atlântica",
+          "Rua Visconde de Pirajá",
+          "Rua Santa Luzia",
+          "Rua do Lavradio",
+          "Rua da Carioca",
+          "Rua do Arco",
+          "Avenida Nossa Senhora de Copacabana",
+          "Rua Barata Ribeiro"
+        ]
+      },
+      {
+        "city": "São Paulo",
+        "streets": [
+          "Avenida Paulista",
+          "Rua Oscar Freire",
+          "Avenida Brigadeiro Faria Lima",
+          "Rua Augusta",
+          "Rua 25 de Março",
+          "Beco do Batman",
+          "Rua Bela Cintra",
+          "Rua Haddock Lobo",
+          "Rua Padre João Manuel",
+          "Rua Fradique Coutinho"
+        ]
+      },
+      {
+        "city": "Salvador",
+        "streets": [
+          "Rua Chile",
+          "Rua Carlos Gomes",
+          "Largo do Pelourinho",
+          "Rua Alfredo de Brito",
+          "Rua Gregório de Matos",
+          "Rua Direita de Santo Antônio",
+          "Rua da Misericórdia",
+          "Rua do Carmo",
+          "Rua das Laranjeiras",
+          "Rua João de Deus"
+        ]
+      }
+    ]
+  }
+]

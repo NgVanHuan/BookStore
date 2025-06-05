@@ -3,6 +3,18 @@
 @{
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
+    string streetNumber = "", street = "", city = "", country = "";
+    if (!string.IsNullOrWhiteSpace(Model.Input?.customerAddress))
+    {
+        var parts = Model.Input.customerAddress.Split(',', StringSplitOptions.TrimEntries);
+        if (parts.Length == 4)
+        {
+            streetNumber = parts[0];
+            street = parts[1];
+            city = parts[2];
+            country = parts[3];
+        }
+    }
 }
 <section id="mu-user-profile" style="padding: 90px 0 0px">
     <div class="container">
@@ -31,11 +43,27 @@
                         <input asp-for="Input.PhoneNumber" class="form-control" />
                         <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating" hidden>
                         <label asp-for="Input.customerAddress" class="form-label"></label>
                         <p>Ex: Street Number, Street Name, City, Country</p>
                         <input asp-for="Input.customerAddress" class="form-control" />
                         <span asp-validation-for="Input.customerAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <label for="countrySelect" class="form-label">Country</label>
+                        <select id="countrySelect" class="form-control" name="country"></select>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <label for="citySelect" class="form-label">City</label>
+                        <select id="citySelect" class="form-control" name="city"></select>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <label for="streetSelect" class="form-label">Street</label>
+                        <select id="streetSelect" class="form-control" name="street"></select>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <label for="streetNumberInput" class="form-label">Street Number</label>
+                        <input type="text" id="streetNumberInput" name="streetNumber" class="form-control" />
                     </div>
                     <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-warning" style="margin-top: 20px">Save</button>
                 </form>
@@ -56,4 +84,147 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Giá trị mặc định từ server
+        const defaultCountry = '@country';
+        const defaultCity = '@city';
+        const defaultStreet = '@street';
+        const defaultStreetNumber = '@streetNumber';
+
+        let addressData = [];
+
+        // Load JSON data
+        fetch('/data/addresses.json')
+            .then(res => res.json())
+            .then(data => {
+                addressData = data;
+                const countrySelect = document.getElementById('countrySelect');
+                countrySelect.innerHTML = '<option value="">-- Select Country --</option>';
+                data.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item.country;
+                    option.text = item.country;
+                    countrySelect.appendChild(option);
+                });
+
+                // Set default country if available
+                if (defaultCountry) {
+                    countrySelect.value = defaultCountry;
+                    countrySelect.dispatchEvent(new Event('change'));
+                }
+            });
+
+        // Khi chọn quốc gia, load thành phố
+        document.getElementById('countrySelect').addEventListener('change', function () {
+            const country = this.value;
+            const citySelect = document.getElementById('citySelect');
+            const streetSelect = document.getElementById('streetSelect');
+            citySelect.innerHTML = '<option value="">-- Select City --</option>';
+            streetSelect.innerHTML = '<option value="">-- Select Street --</option>';
+            if (!country) return;
+            const countryObj = addressData.find(c => c.country === country);
+            if (countryObj) {
+                countryObj.cities.forEach(cityObj => {
+                    const option = document.createElement('option');
+                    option.value = cityObj.city;
+                    option.text = cityObj.city;
+                    citySelect.appendChild(option);
+                });
+
+                // Set default city if available
+                if (defaultCountry === country && defaultCity) {
+                    citySelect.value = defaultCity;
+                    citySelect.dispatchEvent(new Event('change'));
+                }
+            }
+        });
+
+        // Khi chọn thành phố, load đường
+        document.getElementById('citySelect').addEventListener('change', function () {
+            const country = document.getElementById('countrySelect').value;
+            const city = this.value;
+            const streetSelect = document.getElementById('streetSelect');
+            streetSelect.innerHTML = '<option value="">-- Select Street --</option>';
+            if (!country || !city) return;
+            const countryObj = addressData.find(c => c.country === country);
+            if (countryObj) {
+                const cityObj = countryObj.cities.find(ct => ct.city === city);
+                if (cityObj) {
+                    cityObj.streets.forEach(street => {
+                        const option = document.createElement('option');
+                        option.value = street;
+                        option.text = street;
+                        streetSelect.appendChild(option);
+                    });
+
+                    // Set default street if available
+                    if (defaultCountry === country && defaultCity === city && defaultStreet) {
+                        streetSelect.value = defaultStreet;
+                    }
+                }
+            }
+        });
+
+        // Set street number input nếu có
+        document.addEventListener('DOMContentLoaded', function () {
+            if (defaultStreetNumber) {
+                document.getElementById('streetNumberInput').value = defaultStreetNumber;
+            }
+        });
+
+        document.getElementById('streetSelect').addEventListener('change', function () {
+            const country = document.getElementById('countrySelect').value;
+            const city = document.getElementById('citySelect').value;
+            const street = this.value;
+            const streetNumber = document.getElementById('streetNumberInput').value;
+            const addressInput = document.getElementById('Input_customerAddress');
+            if (addressInput) {
+                addressInput.value = streetNumber && street && city && country
+                    ? `${streetNumber}, ${street}, ${city}, ${country}`
+                    : '';
+            }
+        });
+        document.getElementById('streetNumberInput').addEventListener('input', function () {
+            const country = document.getElementById('countrySelect').value;
+            const city = document.getElementById('citySelect').value;
+            const street = document.getElementById('streetSelect').value;
+            const streetNumber = this.value;
+            const addressInput = document.getElementById('Input_customerAddress');
+            if (addressInput) {
+                addressInput.value = streetNumber && street && city && country
+                    ? `${streetNumber}, ${street}, ${city}, ${country}`
+                    : '';
+            }
+        });
+        document.getElementById('profile-form').addEventListener('submit', function (e) {
+            const streetNumber = document.getElementById('streetNumberInput').value.trim();
+            const street = document.getElementById('streetSelect').value.trim();
+            const city = document.getElementById('citySelect').value.trim();
+            const country = document.getElementById('countrySelect').value.trim();
+            const addressInput = document.getElementById('Input_customerAddress');
+
+            // Nếu chưa nhập đủ địa chỉ thì báo lỗi và không submit
+            if (!streetNumber || !street || !city || !country) {
+                e.preventDefault();
+                let errorDiv = document.getElementById('address-error');
+                if (!errorDiv) {
+                    errorDiv = document.createElement('div');
+                    errorDiv.id = 'address-error';
+                    errorDiv.className = 'text-danger mb-2';
+                    document.getElementById('streetNumberInput').parentElement.after(errorDiv);
+                }
+                errorDiv.textContent = 'Please select and enter full address (Street Number, Street, City, Country).';
+                return false;
+            } else {
+                // Xóa thông báo lỗi nếu có
+                const errorDiv = document.getElementById('address-error');
+                if (errorDiv) errorDiv.remove();
+            }
+
+            // Đảm bảo input ẩn customerAddress luôn có giá trị đúng
+            if (addressInput) {
+                addressInput.value = `${streetNumber}, ${street}, ${city}, ${country}`;
+            }
+        });
+    </script>
 }
