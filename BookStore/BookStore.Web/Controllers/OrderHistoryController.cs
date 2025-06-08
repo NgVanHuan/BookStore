@@ -138,6 +138,15 @@ namespace BookStore.Web.Controllers
                 orderHistory.StatusDate = DateTime.Now;
                 _unitOfWork.OrderHistoryRepository.Update(orderHistory);
                 _unitOfWork.SaveChanges();
+
+                var customerOrder = await _unitOfWork.CustomerOrderRepository.GetAll()
+                    .FirstOrDefaultAsync(co => co.OrderId == orderId);
+                if (customerOrder != null)
+                {
+                    customerOrder.OrderDate = DateTime.Now;
+                    _unitOfWork.CustomerOrderRepository.Update(customerOrder);
+                    _unitOfWork.SaveChanges();
+                }
             }
             return RedirectToAction("Index", "OrderHistory");
         }

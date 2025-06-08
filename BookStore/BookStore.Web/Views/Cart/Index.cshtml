@@ -7,6 +7,23 @@
     ViewData["Title"] = "Your Cart";
     var mess = TempData["SuccessMessage"];
 }
+<style>
+    .cart-table {
+        table-layout: fixed;
+        width: 100%;
+    }
+    .cart-table th, .cart-table td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+    .cart-table th:nth-child(1), .cart-table td:nth-child(1) { width: 28%; }
+    .cart-table th:nth-child(2), .cart-table td:nth-child(2) { width: 16%; }
+    .cart-table th:nth-child(3), .cart-table td:nth-child(3) { width: 16%; }
+    .cart-table th:nth-child(4), .cart-table td:nth-child(4) { width: 14%; }
+    .cart-table th:nth-child(5), .cart-table td:nth-child(5) { width: 26%; }
+</style>
 
 <section id="mu-cart-section" style="padding: 90px 0 0px">
     <div class="container">
@@ -18,7 +35,7 @@
         }
         else
         {
-            <table class="table table-bordered">
+            <table class="table table-bordered cart-table">
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -35,7 +52,7 @@
                             <td><a asp-controller="BookDetail" asp-action="Index" asp-route-bookId="@cartItem.Books.BookId">@cartItem.Books.Title</a></td>
                             <td>
                                 <a asp-controller="BookDetail" asp-action="Index" asp-route-bookId="@cartItem.Books.BookId">
-                                    <img src="~/img/book/@cartItem.Books.ImageName" alt="@cartItem.Books.Title" width="50" height="75" />
+                                    <img src="~/img/book/@cartItem.Books.ImageName" alt="@cartItem.Books.Title" width="60" height="90" />
                                 </a>
                             </td>
                             <td>$ @cartItem.Books.Price</td>
@@ -79,13 +96,17 @@
                             }
                         </th>
                         <th>
-                            <div style="font-size: 0.9em; color: #888; margin-bottom: 5px;">
-                                Orders over $30 get 5% off, plus 1% for each $10 more, up to 10% max.
-                            </div>
                             <a asp-controller="Cart" asp-action="CheckOutAndClear">
                                 <button id="checkout-btn" class="btn btn-warning mt-3">Checkout</button>
                             </a>
                         </th>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <div style="font-size: 0.9em; color: #888; margin-bottom: 5px;">
+                                Orders over $30 get 5% off, plus 1% for each $10 more, up to 10% max.
+                            </div>
+                        </td>
                     </tr>
                 </thead>
             </table>
